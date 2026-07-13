@@ -14,7 +14,7 @@ computer science, or related majors
 
 After GitHub Pages is enabled, the course website will be available at:
 
-`https://YOUR-GITHUB-USERNAME.github.io/practical-ai-engineering-finance/`
+`https://cj5815.github.io/practical-ai-engineering-finance/`
 
 ## Repository Structure
 
