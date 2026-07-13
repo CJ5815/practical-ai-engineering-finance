@@ -1,0 +1,51 @@
+site_name: Practical AI Engineering for Finance
+site_description: A 16-week undergraduate course in applied AI engineering for finance
+repo_url: https://github.com/YOUR-GITHUB-USERNAME/practical-ai-engineering-finance
+repo_name: practical-ai-engineering-finance
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Syllabus: syllabus.md
+  - Setup:
+      - Mac and VS Code: setup/mac-vscode.md
+      - Git and GitHub: setup/git-github.md
+  - Weekly Lessons:
+      - Week 1 — Development Environment: weeks/week-01.md
+      - Week 2 — Python Fundamentals: weeks/week-02.md
+      - Week 3 — Python Data Analysis: weeks/week-03.md
+      - Week 4 — Working with APIs: weeks/week-04.md
+      - Week 5 — Reliable API Clients: weeks/week-05.md
+      - Week 6 — Prompt Engineering: weeks/week-06.md
+      - Week 7 — LLM Application Basics: weeks/week-07.md
+      - Week 8 — Embeddings: weeks/week-08.md
+      - Week 9 — Vector Databases: weeks/week-09.md
+      - Week 10 — Basic RAG: weeks/week-10.md
+      - Week 11 — Improved RAG: weeks/week-11.md
+      - Week 12 — Evaluation: weeks/week-12.md
+      - Week 13 — Testing: weeks/week-13.md
+      - Week 14 — FastAPI: weeks/week-14.md
+      - Week 15 — Deployment: weeks/week-15.md
+      - Week 16 — Capstone: weeks/week-16.md
+  - Projects:
+      - Capstone: projects/capstone.md
+      - Grading Rubric: projects/rubric.md
+  - Resources:
+      - Papers and Reading: resources/readings.md
+      - Interview Preparation: resources/interview-prep.md
