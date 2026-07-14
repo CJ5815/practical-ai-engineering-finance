@@ -345,6 +345,17 @@ touch notes.md
 rm notes.md
 ```
 
+| Command | What It Does |
+|---|---|
+| `pwd` | Prints the full path of the current folder ("print working directory") |
+| `ls` | Lists the files and folders in the current folder |
+| `ls -la` | Lists files and folders, including hidden ones (`-a`), with details like size and permissions (`-l`) |
+| `mkdir practical-ai-course` | Creates a new folder named `practical-ai-course` |
+| `cd practical-ai-course` | Moves into the `practical-ai-course` folder ("change directory") |
+| `cd ..` | Moves up one folder, to the parent of the current folder |
+| `touch notes.md` | Creates an empty file named `notes.md` (or updates its timestamp if it already exists) |
+| `rm notes.md` | Deletes `notes.md` |
+
 Be careful with `rm`; it usually removes a file immediately.
 
 ## 2.4 Recommended Course Folder
@@ -722,19 +733,74 @@ project_really_final.py
 
 with a structured project history.
 
-## 4.2 Git and GitHub Are Different
+## 4.2 What Is Git?
 
-- **Git:** version-control software on your computer.
-- **GitHub:** an online service for storing Git repositories.
+Git is a **distributed version control system** — software that tracks every change to your files over time, running entirely on your own computer. No internet connection is required to commit.
 
-## 4.3 Initialize a Repository
+A few core ideas:
+
+- A **repository** ("repo") is a project folder Git is tracking, marked by a hidden `.git` folder inside it.
+- A **commit** is a saved snapshot of your files at a point in time, with a message describing what changed.
+- A **branch** is a named line of development — `main` is the default branch this course uses.
+
+Because Git is *distributed*, cloning a repository copies its entire history, not just the latest version — every collaborator has a full backup of the project's history, not only whoever hosts it.
+
+## 4.3 What Is GitHub?
+
+GitHub is a website that hosts Git repositories online and adds features Git itself doesn't have:
+
+- a web interface to browse code, commits, and history;
+- **pull requests**, for proposing and reviewing changes before merging them;
+- **Issues**, for tracking bugs and tasks;
+- **GitHub Actions**, for running automated tests and deployments (this course's own documentation site deploys itself this way).
+
+GitHub is one option among several — GitLab and Bitbucket are others. Git the tool doesn't require GitHub the website; this course uses GitHub because it's the most widely used in industry.
+
+## 4.4 Local Repository vs. Remote (`origin`)
+
+This distinction trips up almost every beginner, so it's worth stating plainly:
+
+- Your **local repository** is the `.git` folder on your own Mac. Every `git commit` you run changes only this local copy.
+- A **remote** is a copy of the repository hosted somewhere else — usually GitHub. Git calls the remote you first connect or push to `origin` by default. It's just a name; you could rename it, but almost nobody does.
+
+```text
+Your Mac                                GitHub
++-------------------+   git push    +-------------------+
+|  Local repository  | ------------> |   origin (remote)  |
+|   (.git folder)    | <------------ |                     |
++-------------------+   git pull    +-------------------+
+```
+
+Nothing you commit locally reaches GitHub until you run `git push`. Nothing someone else pushed to GitHub reaches your Mac until you run `git pull`. See which remotes a repository knows about with:
+
+```bash
+git remote -v
+```
+
+## 4.5 Common Git Commands
+
+| Command | What It Does |
+|---|---|
+| `git init` | Turns the current folder into a Git repository |
+| `git status` | Shows what's changed, staged, or untracked |
+| `git add <file>` | Stages a file's changes to be included in the next commit |
+| `git commit -m "message"` | Saves a snapshot of staged changes, with a message |
+| `git push` | Sends local commits to the remote (`origin`) |
+| `git pull` | Fetches and merges remote changes into your local branch |
+| `git clone <url>` | Copies a remote repository to your Mac, including its full history |
+| `git log` | Shows the commit history |
+| `git diff` | Shows exactly what changed, line by line, before you stage it |
+| `git branch` | Lists branches, or creates a new one |
+| `git remote -v` | Lists the remotes (like `origin`) a repository knows about |
+
+## 4.6 Initialize a Repository
 
 ```bash
 git init
 git status
 ```
 
-## 4.4 Create `.gitignore`
+## 4.7 Create `.gitignore`
 
 ```text
 .venv/
@@ -752,7 +818,7 @@ Never commit:
 - confidential documents;
 - `.env` files.
 
-## 4.5 Stage and Commit
+## 4.8 Stage and Commit
 
 ```bash
 git status
@@ -760,7 +826,7 @@ git add .
 git commit -m "Complete Week 1 student profile"
 ```
 
-## 4.6 Create a GitHub Repository
+## 4.9 Create a GitHub Repository
 
 Name it:
 
@@ -776,7 +842,9 @@ git remote add origin https://github.com/YOUR-USERNAME/practical-ai-engineering-
 git push -u origin main
 ```
 
-## 4.7 Daily Git Workflow
+`git remote add origin ...` is the exact moment your local repository (§4.4) gets a remote to push to and pull from.
+
+## 4.10 Daily Git Workflow
 
 ```bash
 git status
@@ -794,7 +862,7 @@ Add profile file output
 Document Mac development setup
 ```
 
-## 4.8 Basic README
+## 4.11 Basic README
 
 ```markdown
 # Practical AI Engineering for Finance
@@ -818,6 +886,50 @@ source .venv/bin/activate
 python student_profile.py
 ```
 ```
+
+## 4.12 A Few Worked Examples
+
+**Cloning a repository you don't have locally yet:**
+
+```bash
+git clone https://github.com/YOUR-USERNAME/practical-ai-engineering-finance.git
+cd practical-ai-engineering-finance
+```
+
+**You edited a file and want to save the change:**
+
+```bash
+git status                              # confirm the file shows as modified
+git diff                                # review exactly what changed, line by line
+git add student_profile.py
+git commit -m "Add career interest field"
+git push
+```
+
+**Checking what's committed locally but not yet on GitHub:**
+
+```bash
+git log origin/main..HEAD --oneline
+```
+
+## 4.13 Using Claude or ChatGPT to Understand Git
+
+Git's error messages are notoriously unfriendly to beginners. An AI assistant is genuinely useful here — paste the exact command and error message, and ask what it means before trying random fixes.
+
+Example prompts worth trying:
+
+- *"I ran `git push` and got `! [rejected] main -> main (fetch first)`. What does this mean, and what command fixes it?"*
+- *"What's the difference between `git pull` and `git fetch`?"*
+- *"I have uncommitted changes in a file I didn't mean to edit. How do I undo just that file, without losing my other changes?"*
+
+One caution: ask the assistant to **explain** the fix, not just hand you a command to paste. Git has several commands (`reset`, `revert`, `checkout`) that can discard work if used carelessly — understanding *why* a command works is what makes it safe to reuse the next time you hit the same error.
+
+## 4.14 Reference Websites
+
+- [git-scm.com](https://git-scm.com/) — official Git documentation, including the free *Pro Git* book
+- [docs.github.com](https://docs.github.com/) — official GitHub documentation
+- [skills.github.com](https://skills.github.com/) — free, hands-on GitHub tutorials
+- [Atlassian Git Tutorials](https://www.atlassian.com/git/tutorials) — clear conceptual explanations with diagrams
 
 ## Day 4 Activity
 
