@@ -12,6 +12,10 @@ dependencies = [
     "pandas>=2.2",
     "pydantic>=2.7",
     "python-dotenv>=1.0",
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "statsmodels>=0.14",
+    "polars>=1.0",
 ]
 
 [project.optional-dependencies]

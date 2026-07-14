@@ -24,9 +24,26 @@ def simple_return(beginning_price: float, ending_price: float) -> float:
     return (ending_price / beginning_price) - 1
 
 
+def classify_return(value: float) -> str:
+    """Classify a return as positive, negative, or flat.
+
+    Args:
+        value: A decimal return, such as the output of simple_return.
+
+    Returns:
+        "positive" if value > 0, "negative" if value < 0, otherwise "flat".
+    """
+    if value > 0:
+        return "positive"
+    if value < 0:
+        return "negative"
+    return "flat"
+
+
 def main() -> None:
     result = simple_return(100.0, 105.0)
     print(f"Return: {result:.2%}")
+    print(f"Classification: {classify_return(result)}")
 
 
 if __name__ == "__main__":

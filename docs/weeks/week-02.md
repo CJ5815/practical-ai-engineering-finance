@@ -1,5 +1,7 @@
 # Week 2: Python Fundamentals
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-02_Practical_AI_Engineering_for_Finance.md](week-02_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Learn Python variables, collections, conditionals, loops, functions, and modules.
