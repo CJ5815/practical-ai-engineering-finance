@@ -1,5 +1,7 @@
 # Week 3: Python Data Analysis
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-03_Practical_AI_Engineering_for_Finance.md](week-03_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Use pandas to load, inspect, transform, and summarize financial data.
