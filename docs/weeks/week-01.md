@@ -1,6 +1,6 @@
 # Week 1: Development Environment
 
-> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [Week_1_Practical_AI_Engineering_for_Finance.md](Week_1_Practical_AI_Engineering_for_Finance.md).
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-01_Practical_AI_Engineering_for_Finance.md](week-01_Practical_AI_Engineering_for_Finance.md).
 
 ## Objective
 

@@ -281,15 +281,40 @@ week1_ai_reflection.md
 
 # Day 2: Setting Up a Mac for Development
 
+Today's sections build on each other in order — each tool depends on the one before it:
+
+```text
+Homebrew   -->  Python & Git   -->  VS Code            -->  code .        -->  Virtual environment
+(package        (installed via      (editor, debugger,      (open the         (isolated project
+ manager)        Homebrew)           Source Control)         folder)           dependencies)
+```
+
 ## 2.1 The Main Tools
 
-| Tool | Purpose |
-|---|---|
-| Terminal | Run commands and manage files |
-| Python | Execute the programs you write |
-| VS Code | Write, run, and debug code |
-| Git | Record changes to code |
-| GitHub | Store and share Git repositories online |
+| Tool | Purpose | How It Fits Together |
+|---|---|---|
+| Terminal | Run commands and manage files | Where you type the commands that launch Python, Git, and Homebrew |
+| Python | Execute the programs you write | Installed once via Homebrew; run from Terminal or from inside VS Code |
+| VS Code | Write, run, and debug code | Bundles an editor, a Terminal, and Git's Source Control panel into one window |
+| Git | Record changes to code | Runs locally on your Mac; saves a snapshot ("commit") each time you save progress |
+| GitHub | Store and share Git repositories online | The remote home for your repository; `git push` and `git pull` sync it with Git on your Mac |
+
+These five tools form one pipeline: you write code in **VS Code**, which runs it through **Python** and tracks it with **Git**, both reachable from VS Code's built-in **Terminal**. **Git** then syncs that history to **GitHub**.
+
+```text
+VS Code
+|
++-- built-in Terminal
+|     |
+|     +-- runs -------> Python   (executes your .py files)
+|     +-- runs -------> Git      (records local commits)
+|
++-- Source Control panel
+      |
+      +-- also drives -> Git
+                            |
+                            +-- push / pull --> GitHub (remote copy)
+```
 
 ## 2.2 Finder and Terminal
 
@@ -302,6 +327,10 @@ To open Terminal:
 1. Press `Command + Space`.
 2. Type `Terminal`.
 3. Press Return.
+
+![An open Terminal window](images/week-01/terminal-window.png)
+
+*Screenshot to add: an open Terminal window showing your username, computer name, and the `%` prompt. Replace `docs/weeks/images/week-01/terminal-window.png` with your own screenshot (keep the same filename, or update the path above).*
 
 ## 2.3 Basic Terminal Commands
 
@@ -329,7 +358,9 @@ pwd
 
 ## 2.5 Installing Homebrew
 
-Use the official Homebrew installation instructions. Then verify:
+**Homebrew** is macOS's most widely used package manager. Instead of hunting down individual installers for command-line tools, you tell Homebrew what you want (`brew install python`, `brew install git`) and it downloads, installs, and keeps them up to date for you.
+
+Use the [official Homebrew installation instructions](https://brew.sh). Then verify:
 
 ```bash
 brew --version
@@ -349,6 +380,8 @@ Use Python 3.11 or later.
 
 ## 2.7 Installing Git
 
+**Git** is version-control software: it saves a snapshot (a "commit") of your project every time you choose to save progress, so you can see what changed, compare versions, and undo mistakes. You'll install it now and use it starting Day 4; §4.1 covers version control in more depth.
+
 ```bash
 brew install git
 git --version
@@ -358,7 +391,21 @@ git config --global user.email "your-email@example.com"
 
 ## 2.8 Installing Visual Studio Code
 
-Install these extensions:
+1. Go to the [official VS Code download page](https://code.visualstudio.com/download) and download the Mac build. Choose **Universal** unless you specifically know you want an Apple Silicon– or Intel-only build — Universal runs on either.
+2. Safari usually unzips the download automatically. If it doesn't, double-click the `.zip` file in your Downloads folder; you'll get `Visual Studio Code.app`.
+3. Drag `Visual Studio Code.app` into your `Applications` folder.
+4. Launch it from Applications (or Spotlight: `Command + Space`, type `Visual Studio Code`). On first launch, macOS may warn that the app was downloaded from the internet — click **Open** to confirm.
+
+For a fuller walkthrough with more screenshots than fit on this page, see the [official VS Code macOS setup guide](https://code.visualstudio.com/docs/setup/mac).
+
+![VS Code on first launch](images/week-01/vscode-window.png)
+
+*Screenshot to add: VS Code just after opening, with the Explorer sidebar and Welcome tab visible. Replace `docs/weeks/images/week-01/vscode-window.png` with your own screenshot.*
+
+**Install extensions:**
+
+1. Open the Extensions view: `Command + Shift + X`.
+2. Search for each name below and click **Install**.
 
 - Python
 - Pylance
@@ -373,6 +420,8 @@ Install these extensions:
 code .
 ```
 
+`code` is a small command-line shim that VS Code installs. It tells the app "open a folder as a workspace." The `.` means *the current folder* — so `code .` opens whatever folder Terminal is sitting in right now, with its file tree shown in VS Code's Explorer panel. Run it from inside your course folder (§2.4), not your home directory.
+
 If `code` is unavailable:
 
 1. Open VS Code.
@@ -380,7 +429,26 @@ If `code` is unavailable:
 3. Select `Shell Command: Install 'code' command in PATH`.
 4. Restart Terminal.
 
+Once the folder is open, you don't need to switch back to the Terminal app — VS Code has its own **integrated terminal**, the same shell docked inside the editor window. Open it with `` Control + ` `` or **View → Terminal**. It runs the same commands as §2.2's Terminal, just without leaving VS Code.
+
+![VS Code's integrated terminal panel](images/week-01/vscode-integrated-terminal.png)
+
+*Screenshot to add: VS Code with the integrated terminal panel open at the bottom. Replace `docs/weeks/images/week-01/vscode-integrated-terminal.png` with your own screenshot.*
+
 ## 2.10 Python Virtual Environments
+
+A **virtual environment** is an isolated, project-specific copy of Python and its installed packages. Without one, every project on your Mac shares the same global set of packages — if one project needs an old version of a library and another needs the newest version, installing one breaks the other.
+
+A virtual environment fixes this by creating a private folder (conventionally named `.venv`) inside your project that holds its own Python interpreter and its own installed packages, completely separate from your system Python and from every other project's `.venv`.
+
+```text
+System Python
+|
++-- Project A/.venv  --> pandas 1.5, requests 2.28   (isolated)
++-- Project B/.venv  --> pandas 2.2, requests 2.31   (isolated)
+```
+
+Each project's dependencies stay independent, so upgrading a package for one class assignment can't silently break another.
 
 ```bash
 python3 -m venv .venv
@@ -394,6 +462,16 @@ Reactivate later with:
 ```bash
 source .venv/bin/activate
 ```
+
+### Activating the Virtual Environment in VS Code
+
+VS Code needs to be told which Python interpreter to use:
+
+1. Press `Command + Shift + P` to open the Command Palette.
+2. Run `Python: Select Interpreter`.
+3. Choose the interpreter inside `.venv` (its path ends in `.venv/bin/python`).
+
+After that, every **new** integrated terminal VS Code opens for this project auto-activates `.venv` for you — its prompt will start with `(.venv)`, so you don't need to run `source .venv/bin/activate` yourself inside VS Code. The active interpreter is also shown in the blue status bar at the bottom of the window; click it any time to switch.
 
 ## 2.11 Common Setup Problems
 
@@ -603,6 +681,21 @@ print("Profile saved to student_profile.txt")
 4. Enter the requested values.
 5. Inspect the Variables panel.
 6. Use Step Over to move through the program.
+
+## 3.11 Using Jupyter Notebooks in VS Code
+
+A **notebook** (a `.ipynb` file) is a sequence of cells — some hold code, some hold formatted text — that you run one at a time, with each cell's output displayed right below it. That makes notebooks well suited to exploring data step by step, which is why you'll use them starting Week 2. A `.py` script, by contrast, only shows output when the whole file runs.
+
+You already installed the **Jupyter** extension in §2.8, so VS Code opens `.ipynb` files with a notebook interface automatically — no extra setup.
+
+To run one:
+
+1. Open `notebooks/week01_intro_notebook.ipynb` (Explorer, or `code notebooks/week01_intro_notebook.ipynb` from Terminal).
+2. Click **Select Kernel** in the top-right corner and choose the interpreter inside your project's `.venv` — the same one from §2.10.
+3. Click the ▷ next to a cell, or press `Shift + Enter`, to run it and move to the next cell.
+4. If VS Code prompts that `ipykernel` needs to be installed, click **Install** — it installs into your active `.venv`, not system-wide.
+
+The sample notebook loads `data/sample/prices.csv` and reuses the `simple_return()` function from `src/ai_finance_course/returns.py` — the same helper introduced in this week's code, not a new formula.
 
 ## Day 3 Activity
 
@@ -1016,6 +1109,7 @@ During Week 1, you:
 - Eric Matthes, *Python Crash Course*
 - Al Sweigart, *Automate the Boring Stuff with Python*
 - Chip Huyen, *AI Engineering*
+- Microsoft Learn, [*Intro to Python Development*](https://learn.microsoft.com/en-us/shows/intro-to-python-development/) video series
 
 ---
 

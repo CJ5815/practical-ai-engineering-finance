@@ -27,8 +27,9 @@ nav:
       - Mac and VS Code: setup/mac-vscode.md
       - Git and GitHub: setup/git-github.md
   - Weekly Lessons:
-      - Week 1 — Development Environment: weeks/week-01.md
-      - Week 1 — Full Lesson: weeks/Week_1_Practical_AI_Engineering_for_Finance.md
+      - Week 1:
+          - Development Environment: weeks/week-01.md
+          - Full Lesson: weeks/week-01_Practical_AI_Engineering_for_Finance.md
       - Week 2 — Python Fundamentals: weeks/week-02.md
       - Week 3 — Python Data Analysis: weeks/week-03.md
       - Week 4 — Working with APIs: weeks/week-04.md
