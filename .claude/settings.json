@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://127.0.0.1:8765/weeks/week-01/)",
+      "Bash(curl -s \"http://127.0.0.1:8765/weeks/week-01_Practical_AI_Engineering_for_Finance/\")",
+      "Bash(pkill -f \"mkdocs serve -a 127.0.0.1:8765\")",
+      "Bash(rm -rf /tmp/mkdocs-serve-venv /tmp/mkdocs-serve.log)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
+    ]
+  }
+}
