@@ -6,7 +6,33 @@
       "Bash(pkill -f \"mkdocs serve -a 127.0.0.1:8765\")",
       "Bash(rm -rf /tmp/mkdocs-serve-venv /tmp/mkdocs-serve.log)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(python3 -c ' *)",
+      "Bash(rm -f /tmp/week02-executed.ipynb)",
+      "Bash(python3 -c \" *)",
+      "Bash(git -C /Users/josephcerniglia/Documents/python/practical-ai-engineering-finance status --short)",
+      "Bash(rsvg-convert -w 640 -h 360 dataframe-table.svg -o dataframe-table.png)",
+      "Bash(rsvg-convert -w 640 -h 360 cumulative-growth-chart.svg -o cumulative-growth-chart.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight dataframe-table.png cumulative-growth-chart.png)",
+      "Bash(rm -f /Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-03/*.svg *)",
+      "Bash(gh api *)",
+      "Bash(gh run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{size_download} bytes\\\\n\" \"https://cj5815.github.io/practical-ai-engineering-finance/weeks/images/week-03/dataframe-table.png\")",
+      "Bash(curl -s \"https://cj5815.github.io/practical-ai-engineering-finance/weeks/week-03_practical_ai_engineering_for_finance/\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://cj5815.github.io/practical-ai-engineering-finance/weeks/week-03/\")",
+      "Bash(curl -s \"https://cj5815.github.io/practical-ai-engineering-finance/weeks/week-03/\")",
+      "Bash(curl -s \"https://cj5815.github.io/practical-ai-engineering-finance/weeks/week-03_Practical_AI_Engineering_for_Finance/\")",
+      "Bash(sips -g pixelWidth -g pixelHeight docs/weeks/images/week-01/terminal-window.png)",
+      "Bash(git checkout *)",
+      "Bash(sips -g pixelWidth -g pixelHeight docs/weeks/images/week-01/*.png)",
+      "Bash(find ~ -maxdepth 4 -iname \"practical-ai-engineering-finance\" -type d 2>/dev/null *)",
+      "Read(//Users/josephcerniglia/**)",
+      "Bash(ls -la /Users/josephcerniglia/Documents/practical-ai-engineering-finance/ 2>&1 | head -20)",
+      "Read(//Users/josephcerniglia/Documents/practical-ai-engineering-finance/**)"
+    ],
+    "additionalDirectories": [
+      "/private/tmp",
+      "/Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-03"
     ]
   }
 }

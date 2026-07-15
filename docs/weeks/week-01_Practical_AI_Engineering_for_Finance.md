@@ -328,7 +328,7 @@ To open Terminal:
 2. Type `Terminal`.
 3. Press Return.
 
-![An open Terminal window](images/week-01/terminal-window.png)
+![An open Terminal window](images/week-01/terminal-window1.png)
 
 *Screenshot to add: an open Terminal window showing your username, computer name, and the `%` prompt. Replace `docs/weeks/images/week-01/terminal-window.png` with your own screenshot (keep the same filename, or update the path above).*
 
@@ -409,7 +409,7 @@ git config --global user.email "your-email@example.com"
 
 For a fuller walkthrough with more screenshots than fit on this page, see the [official VS Code macOS setup guide](https://code.visualstudio.com/docs/setup/mac).
 
-![VS Code on first launch](images/week-01/vscode-window.png)
+![VS Code on first launch](images/week-01/vscode-window1.png)
 
 *Screenshot to add: VS Code just after opening, with the Explorer sidebar and Welcome tab visible. Replace `docs/weeks/images/week-01/vscode-window.png` with your own screenshot.*
 
@@ -442,7 +442,7 @@ If `code` is unavailable:
 
 Once the folder is open, you don't need to switch back to the Terminal app — VS Code has its own **integrated terminal**, the same shell docked inside the editor window. Open it with `` Control + ` `` or **View → Terminal**. It runs the same commands as §2.2's Terminal, just without leaving VS Code.
 
-![VS Code's integrated terminal panel](images/week-01/vscode-integrated-terminal.png)
+![VS Code's integrated terminal panel](images/week-01/vscode-integrated-terminal1.png)
 
 *Screenshot to add: VS Code with the integrated terminal panel open at the bottom. Replace `docs/weeks/images/week-01/vscode-integrated-terminal.png` with your own screenshot.*
 
