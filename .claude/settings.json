@@ -29,12 +29,19 @@
       "Read(//Users/josephcerniglia/**)",
       "Bash(ls -la /Users/josephcerniglia/Documents/practical-ai-engineering-finance/ 2>&1 | head -20)",
       "Read(//Users/josephcerniglia/Documents/practical-ai-engineering-finance/**)",
-      "Bash(rm -rf /tmp/polars-check)"
+      "Bash(rm -rf /tmp/polars-check)",
+      "Bash(rsvg-convert -w 640 -h 360 json-response.svg -o json-response.png)",
+      "Bash(rsvg-convert -w 640 -h 360 saved-filings-output.svg -o saved-filings-output.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight json-response.png saved-filings-output.png)",
+      "Bash(rm -f /Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-04/*.svg *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://www.sec.gov/search-filings/edgar-application-programming-interfaces\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -H \"User-Agent: Practical AI Engineering Course student@example.com\" \"https://www.sec.gov/search-filings/edgar-application-programming-interfaces\")"
     ],
     "additionalDirectories": [
       "/private/tmp",
       "/Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-03",
-      "/private/tmp/polars-check"
+      "/private/tmp/polars-check",
+      "/Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-04"
     ]
   }
 }

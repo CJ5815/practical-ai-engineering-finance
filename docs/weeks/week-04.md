@@ -1,5 +1,7 @@
 # Week 4: Working with APIs
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-04_Practical_AI_Engineering_for_Finance.md](week-04_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Understand HTTP, REST, JSON, requests, responses, and status codes.
