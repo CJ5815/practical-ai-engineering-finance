@@ -227,7 +227,7 @@ def simple_return(beginning_price: float, ending_price: float) -> float:
     return (ending_price / beginning_price) - 1
 ```
 
-This is the actual `simple_return` function from `src/ai_finance_course/returns.py` — the same one Week 1's sample notebook imported. Type hints (`: float`, `-> float`) don't change how the code runs; they tell you, your teammates, and your editor what each argument and return value should be. Because Pylance (installed in Week 1) reads these hints, it will flag a call like `simple_return("100", 105)` as wrong before you ever run the program.
+This is the actual `simple_return` function from [`src/ai_finance_course/returns.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/src/ai_finance_course/returns.py) — the same one Week 1's sample notebook imported. Type hints (`: float`, `-> float`) don't change how the code runs; they tell you, your teammates, and your editor what each argument and return value should be. Because Pylance (installed in Week 1) reads these hints, it will flag a call like `simple_return("100", 105)` as wrong before you ever run the program.
 
 ## 3.2 Writing Good Comments
 
@@ -330,7 +330,7 @@ def test_classify_flat_return() -> None:
     assert classify_return(0.0) == "flat"
 ```
 
-`classify_return` and its tests already exist in `src/ai_finance_course/returns.py` and `tests/test_returns.py` — read them there, then write one more test case of your own (for example, a negative return).
+`classify_return` and its tests already exist in [`src/ai_finance_course/returns.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/src/ai_finance_course/returns.py) and [`tests/test_returns.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/tests/test_returns.py) — read them there, then write one more test case of your own (for example, a negative return).
 
 ## Day 4 Activity
 
@@ -344,7 +344,7 @@ Write a short reflection: what did you build, what failed, how did you fix it, a
 
 Plain Python lists and dictionaries work, but they get slow and awkward once you're working with thousands of prices across hundreds of companies. The libraries below are what the rest of this course — and most real finance software — builds on instead. This section is a first look, not a deep dive: Week 3 covers pandas in depth once you've had a chance to meet it here first.
 
-Every example below also exists as runnable code in `examples/week-02/library_basics.py` (and an identical `library_basics.ipynb` notebook) — see [Running as a Script vs. a Notebook](#running-as-a-script-vs-a-notebook) below.
+Every example below also exists as runnable code in [`examples/week-02/library_basics.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/examples/week-02/library_basics.py) (and an identical [`library_basics.ipynb`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/examples/week-02/library_basics.ipynb) notebook) — see [Running as a Script vs. a Notebook](#running-as-a-script-vs-a-notebook) below.
 
 ## NumPy — Fast Numeric Arrays
 
@@ -434,7 +434,7 @@ print(model.params)  # [intercept, slope] — slope should land near 1.2
 
 ## Running as a Script vs. a Notebook
 
-`examples/week-02/library_basics.py` and `examples/week-02/library_basics.ipynb` contain the same logic. Run the script with:
+[`examples/week-02/library_basics.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/examples/week-02/library_basics.py) and [`examples/week-02/library_basics.ipynb`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/examples/week-02/library_basics.ipynb) contain the same logic. Run the script with:
 
 ```bash
 python examples/week-02/library_basics.py

@@ -23,6 +23,7 @@ By Day 4, you'll have turned four separate calculations into tested, reusable fu
 - [Day 2: Filtering, Sorting, and Missing Values](#day-2-filtering-sorting-and-missing-values)
 - [Day 3: Group-By and Rolling Calculations](#day-3-group-by-and-rolling-calculations)
 - [Day 4: Testing and the Performance Summary](#day-4-testing-and-the-performance-summary)
+- [Polars: A Faster Alternative to pandas](#polars-a-faster-alternative-to-pandas)
 - [Week 3 Coding Lab](#week-3-coding-lab)
 - [Practice Exercises](#practice-exercises)
 - [Common Mistakes](#common-mistakes)
@@ -233,7 +234,7 @@ def test_rolling_average() -> None:
 
 ## 4.2 Building the Performance Summary
 
-`src/ai_finance_course/analysis.py` has four functions, each doing one job:
+[`src/ai_finance_course/analysis.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/src/ai_finance_course/analysis.py) has four functions, each doing one job:
 
 ```python
 def add_daily_returns(prices: pd.DataFrame, price_column: str = "close") -> pd.DataFrame:
@@ -243,7 +244,7 @@ def add_daily_returns(prices: pd.DataFrame, price_column: str = "close") -> pd.D
     return result
 ```
 
-`rolling_average`, `rolling_volatility`, and `cumulative_growth` follow the same shape — read them in `src/ai_finance_course/analysis.py`. Wiring all four together into one performance summary is `examples/week-03/performance_summary.py` (and the identical `performance_summary.ipynb`):
+`rolling_average`, `rolling_volatility`, and `cumulative_growth` follow the same shape — read them in [`src/ai_finance_course/analysis.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/src/ai_finance_course/analysis.py). Wiring all four together into one performance summary is [`examples/week-03/performance_summary.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/examples/week-03/performance_summary.py) (and the identical [`performance_summary.ipynb`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/examples/week-03/performance_summary.ipynb)):
 
 ```bash
 python examples/week-03/performance_summary.py
@@ -261,11 +262,108 @@ Write a short reflection: what does `cumulative_growth` measure, and why does it
 
 ---
 
+# Polars: A Faster Alternative to pandas
+
+## Why Look at Polars Now?
+
+Week 2 gave you a one-line glimpse of polars. Now that you've spent this whole week with pandas — DataFrames, filtering, sorting, missing values, group-by, rolling calculations, and cumulative growth — you're in a good position to see how the same operations look in polars, and why some teams choose it over pandas for large datasets.
+
+**polars** is a DataFrame library written in Rust, built from the ground up for speed and memory efficiency. It supports two execution modes:
+
+- **Eager** (like pandas): every operation runs immediately — for example, `pl.read_csv(...)`.
+- **Lazy**: you build up a *query plan* first (`pl.scan_csv(...)`), and polars optimizes and runs the whole pipeline only when you call `.collect()`. This lets polars skip work pandas can't — for example, only reading the columns you actually use.
+
+This section only uses eager mode, to keep a direct, side-by-side comparison with the pandas code you already wrote this week.
+
+## Rewriting This Week's Pipeline in Polars
+
+Every operation from Days 1–3, shown in polars.
+
+### Loading and Inspecting
+
+```python
+import polars as pl
+
+prices = pl.read_csv("data/sample/prices.csv")
+
+print(prices.head())
+print(prices.schema)      # polars' equivalent of pandas' .dtypes
+print(prices.describe())
+```
+
+### Filtering and Sorting
+
+```python
+above_101 = prices.filter(pl.col("close") > 101)
+
+by_price_desc = prices.sort("close", descending=True)
+```
+
+### Missing Values
+
+```python
+messy_prices = pl.DataFrame({"close": [100.0, 101.25, None, 103.10, 104.00]})
+
+print(messy_prices.null_count())                    # polars' equivalent of .isna().sum()
+print(messy_prices.drop_nulls())
+print(messy_prices.fill_null(strategy="forward"))
+```
+
+polars uses a real `null` type instead of pandas' float-based `NaN` — one reason a polars column keeps an integer type even when values are missing, where pandas would silently upcast it to `float64`.
+
+### Group-By and Rolling Calculations
+
+```python
+two_tickers = pl.concat([
+    prices.with_columns(ticker=pl.lit("DEMO")),
+    prices.with_columns(ticker=pl.lit("DEMO2"), close=pl.col("close") * 1.1),
+])
+
+print(two_tickers.group_by("ticker").agg(pl.col("close").mean()))
+
+prices = prices.with_columns(
+    (pl.col("close") / pl.col("close").shift(1) - 1).alias("return")
+)
+prices = prices.with_columns(
+    pl.col("return").rolling_mean(window_size=3).alias("rolling_avg_return"),
+    pl.col("return").rolling_std(window_size=3).alias("rolling_volatility"),
+)
+```
+
+Notice the style: pandas mutates or reassigns columns with `df["x"] = ...`; polars builds **expressions** (`pl.col("return").rolling_mean(...)`) and applies several at once inside a single `.with_columns()`.
+
+### Cumulative Growth
+
+```python
+prices = prices.with_columns(
+    (1 + pl.col("return").fill_null(0)).cum_prod().alias("cumulative_growth")
+)
+```
+
+## pandas vs. Polars: At a Glance
+
+| | pandas | polars |
+|---|---|---|
+| Written in | Python (with Cython/NumPy underneath) | Rust |
+| API style | Method calls on a mutable DataFrame; boolean masks (`df[df["x"] > 1]`) | Expressions (`pl.col("x")`), composed inside `.filter()` / `.with_columns()` |
+| Execution | Eager only | Eager (`read_csv`) or lazy (`scan_csv` + `.collect()`) |
+| Missing value marker | `NaN` (a float, even in integer columns) | `null` (a real missing-value marker, any dtype) |
+| Multi-core use | Limited, mostly single-threaded | Parallel by default across columns and rows |
+| Typical speed on large files | Slower | Often several times faster, especially in lazy mode |
+| Ecosystem maturity | Extremely mature — the default choice almost everywhere | Newer, growing fast, fewer third-party integrations |
+| Best fit | Small-to-medium data; maximum tutorial/library support | Large datasets; performance-sensitive pipelines |
+
+## When to Reach for Polars
+
+Default to pandas while you're still learning, or whenever a library you depend on (many plotting and machine-learning tools) expects a pandas DataFrame directly. Reach for polars once your data is large enough that pandas feels slow, or when you're building a new pipeline from scratch and can choose the fastest tool without inheriting pandas-only dependencies.
+
+---
+
 # Week 3 Coding Lab
 
 ## Performance Summary Function
 
-Extend `src/ai_finance_course/analysis.py` and `tests/test_analysis.py`:
+Extend [`src/ai_finance_course/analysis.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/src/ai_finance_course/analysis.py) and [`tests/test_analysis.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/tests/test_analysis.py):
 
 - confirm all four functions (`add_daily_returns`, `rolling_average`, `rolling_volatility`, `cumulative_growth`) exist and are tested;
 - run `python examples/week-03/performance_summary.py` and confirm it prints a complete table and shows a chart;

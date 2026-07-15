@@ -701,12 +701,12 @@ You already installed the **Jupyter** extension in §2.8, so VS Code opens `.ipy
 
 To run one:
 
-1. Open `notebooks/week01_intro_notebook.ipynb` (Explorer, or `code notebooks/week01_intro_notebook.ipynb` from Terminal).
+1. Open [`notebooks/week01_intro_notebook.ipynb`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/notebooks/week01_intro_notebook.ipynb) (Explorer, or `code notebooks/week01_intro_notebook.ipynb` from Terminal).
 2. Click **Select Kernel** in the top-right corner and choose the interpreter inside your project's `.venv` — the same one from §2.10.
 3. Click the ▷ next to a cell, or press `Shift + Enter`, to run it and move to the next cell.
 4. If VS Code prompts that `ipykernel` needs to be installed, click **Install** — it installs into your active `.venv`, not system-wide.
 
-The sample notebook loads `data/sample/prices.csv` and reuses the `simple_return()` function from `src/ai_finance_course/returns.py` — the same helper introduced in this week's code, not a new formula.
+The sample notebook loads `data/sample/prices.csv` and reuses the `simple_return()` function from [`src/ai_finance_course/returns.py`](https://github.com/CJ5815/practical-ai-engineering-finance/blob/main/src/ai_finance_course/returns.py) — the same helper introduced in this week's code, not a new formula.
 
 ## Day 3 Activity
 
@@ -793,14 +793,98 @@ git remote -v
 | `git branch` | Lists branches, or creates a new one |
 | `git remote -v` | Lists the remotes (like `origin`) a repository knows about |
 
-## 4.6 Initialize a Repository
+## 4.6 What Is a Branch, and Why Use One?
+
+A **branch** is an independent line of development within the same repository — a way to try changes without touching the working version until you're ready.
+
+Every repository starts with one branch, `main` (the default line of work). Creating a branch doesn't copy your files; it just adds a new named pointer to the current commit, so switching branches is instant and cheap.
+
+Why bother with one:
+
+- Experiment with a risky or unfinished change without breaking `main`.
+- Work on two unrelated things at once without mixing them together in one commit.
+- Give a reviewer (or your future self) a clean, isolated set of changes to look at before merging.
+
+For solo coursework, a common pattern is one branch per exercise or feature, merged into `main` once it works — for team projects, it's closer to a requirement, since two people can't both edit `main` directly without stepping on each other.
+
+```text
+main:            A---B---C-----------------F
+                       \                   /
+feature-branch:         D-------E---------
+```
+
+*Commits A, B, C stay on `main`. `feature-branch` starts at C, adds commits D and E, and is merged back in at F.*
+
+## 4.7 Creating, Switching, and Merging Branches
+
+```bash
+git branch feature-classify-return   # create a new branch
+git switch feature-classify-return   # move onto it (older Git: git checkout feature-classify-return)
+
+git switch -c feature-classify-return  # shortcut: create and switch in one step
+
+git branch                            # list branches; * marks the current one
+```
+
+Do your work and commit as usual (§4.12), then merge it back into `main`:
+
+```bash
+git switch main
+git pull                              # make sure main is up to date first
+git merge feature-classify-return
+git push
+```
+
+![A branch diagram in a Git graph view](images/week-01/git-branch-diagram.png)
+
+*Screenshot to add: a branch-and-merge graph, either from VS Code's Source Control graph view or `git log --oneline --graph --all`. Replace `docs/weeks/images/week-01/git-branch-diagram.png` with your own screenshot.*
+
+## 4.8 Merge Conflicts
+
+A **merge conflict** happens when Git can't automatically combine two branches — usually because both changed the same lines of the same file. Git pauses the merge and marks the conflicting section directly inside the file:
+
+```text
+<<<<<<< HEAD
+return "flat" if value == 0 else classification
+=======
+return "flat" if abs(value) < 0.0001 else classification
+>>>>>>> feature-classify-return
+```
+
+Everything between `<<<<<<< HEAD` and `=======` is what's on your current branch; everything between `=======` and `>>>>>>> feature-classify-return` is what's coming in from the other branch.
+
+To resolve it:
+
+1. Open the file and decide what the final code should be — keep one side, the other, or a combination of both.
+2. Delete the `<<<<<<<`, `=======`, and `>>>>>>>` marker lines themselves.
+3. Stage the resolved file and finish the merge:
+
+```bash
+git add classify_return.py
+git commit
+```
+
+Suggestions for avoiding conflicts in the first place:
+
+- Pull `main` before starting a new branch, and again right before merging.
+- Keep branches short-lived — the longer two branches diverge, the more likely they touch the same lines.
+- Commit small, focused changes rather than one giant commit touching many files.
+
+## 4.9 Branching Best Practices
+
+- Name branches for what they do (`fix-return-bug`, `add-notebook`), not who wrote them.
+- Merge into `main` often — a branch that lives for weeks is harder to merge than one that lives for a day.
+- Delete a branch after merging it (`git branch -d feature-classify-return`) to keep the branch list meaningful.
+- For solo coursework, committing straight to `main` (as this course's Day 1–4 activities do) is fine. Branches earn their overhead once you're collaborating, or want to isolate a risky change from working code.
+
+## 4.10 Initialize a Repository
 
 ```bash
 git init
 git status
 ```
 
-## 4.7 Create `.gitignore`
+## 4.11 Create `.gitignore`
 
 ```text
 .venv/
@@ -818,15 +902,55 @@ Never commit:
 - confidential documents;
 - `.env` files.
 
-## 4.8 Stage and Commit
+## 4.12 Stage and Commit: A Closer Look at `git add`
+
+Git keeps three separate areas for your files:
+
+```text
+Working Directory   --git add-->   Staging Area   --git commit-->   Repository
+   (your edits)                   ("the index":                    (.git history:
+                                    what the next                   permanent
+                                    commit will include)            snapshots)
+```
+
+- The **working directory** is what's on disk right now — everything you've edited.
+- The **staging area** (also called "the index") is a holding area: once a file is staged, it's ready to be included in the next commit, even if you go on to edit other files afterward.
+- The **repository** is the permanent history, written only when you `git commit`.
 
 ```bash
-git status
-git add .
+git status                     # see what's modified, staged, or untracked
+git add student_profile.py     # stage one specific file
+git add .                      # stage everything changed in and below the current folder
+git status                     # staged changes now show as "Changes to be committed"
 git commit -m "Complete Week 1 student profile"
 ```
 
-## 4.9 Create a GitHub Repository
+Staging lets you build a commit from only some of your changes. If you edited two unrelated files, `git add` and commit them one at a time instead of together — it keeps your history easy to read later, and easier to undo one change without touching the other.
+
+## 4.13 Setting Up a GitHub Account
+
+If you don't already have one:
+
+1. Go to [github.com](https://github.com/) and click **Sign up**.
+2. Choose a professional username — many people keep the same one for their entire career, and recruiters do look at it.
+3. Verify your email address.
+4. (Recommended) Enable two-factor authentication under **Settings → Password and authentication**.
+
+![The GitHub sign-up page](images/week-01/github-signup.png)
+
+*Screenshot to add: the GitHub sign-up page, or your own profile page once created. Replace `docs/weeks/images/week-01/github-signup.png` with your own screenshot.*
+
+What GitHub is for, beyond this course:
+
+- hosting personal and open-source projects, publicly or privately;
+- a portfolio recruiters actually check — your public repositories and commit history are a real work sample;
+- collaborating with others through pull requests and code review;
+- automating tests and deployments with GitHub Actions (§4.3);
+- discovering and contributing to other people's open-source projects.
+
+Use it for any project you want a history of, want to share, or might someday collaborate on — class assignments, personal scripts, and eventually this course's capstone all qualify.
+
+## 4.14 Create a GitHub Repository
 
 Name it:
 
@@ -844,7 +968,7 @@ git push -u origin main
 
 `git remote add origin ...` is the exact moment your local repository (§4.4) gets a remote to push to and pull from.
 
-## 4.10 Daily Git Workflow
+## 4.15 Daily Git Workflow
 
 ```bash
 git status
@@ -862,7 +986,7 @@ Add profile file output
 Document Mac development setup
 ```
 
-## 4.11 Basic README
+## 4.16 Basic README
 
 ```markdown
 # Practical AI Engineering for Finance
@@ -887,7 +1011,7 @@ python student_profile.py
 ```
 ```
 
-## 4.12 A Few Worked Examples
+## 4.17 A Few Worked Examples
 
 **Cloning a repository you don't have locally yet:**
 
@@ -912,7 +1036,7 @@ git push
 git log origin/main..HEAD --oneline
 ```
 
-## 4.13 Using Claude or ChatGPT to Understand Git
+## 4.18 Using Claude or ChatGPT to Understand Git
 
 Git's error messages are notoriously unfriendly to beginners. An AI assistant is genuinely useful here — paste the exact command and error message, and ask what it means before trying random fixes.
 
@@ -921,15 +1045,17 @@ Example prompts worth trying:
 - *"I ran `git push` and got `! [rejected] main -> main (fetch first)`. What does this mean, and what command fixes it?"*
 - *"What's the difference between `git pull` and `git fetch`?"*
 - *"I have uncommitted changes in a file I didn't mean to edit. How do I undo just that file, without losing my other changes?"*
+- *"I'm in a merge conflict and I don't understand the `<<<<<<<` markers in my file. Walk me through resolving this one step at a time."*
 
 One caution: ask the assistant to **explain** the fix, not just hand you a command to paste. Git has several commands (`reset`, `revert`, `checkout`) that can discard work if used carelessly — understanding *why* a command works is what makes it safe to reuse the next time you hit the same error.
 
-## 4.14 Reference Websites
+## 4.19 Reference Websites
 
 - [git-scm.com](https://git-scm.com/) — official Git documentation, including the free *Pro Git* book
 - [docs.github.com](https://docs.github.com/) — official GitHub documentation
 - [skills.github.com](https://skills.github.com/) — free, hands-on GitHub tutorials
 - [Atlassian Git Tutorials](https://www.atlassian.com/git/tutorials) — clear conceptual explanations with diagrams
+- [Learn Git Branching](https://learngitbranching.js.org/) — an interactive, visual playground specifically for branching and merging
 
 ## Day 4 Activity
 

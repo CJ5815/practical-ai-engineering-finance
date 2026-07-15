@@ -28,11 +28,13 @@
       "Bash(find ~ -maxdepth 4 -iname \"practical-ai-engineering-finance\" -type d 2>/dev/null *)",
       "Read(//Users/josephcerniglia/**)",
       "Bash(ls -la /Users/josephcerniglia/Documents/practical-ai-engineering-finance/ 2>&1 | head -20)",
-      "Read(//Users/josephcerniglia/Documents/practical-ai-engineering-finance/**)"
+      "Read(//Users/josephcerniglia/Documents/practical-ai-engineering-finance/**)",
+      "Bash(rm -rf /tmp/polars-check)"
     ],
     "additionalDirectories": [
       "/private/tmp",
-      "/Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-03"
+      "/Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-03",
+      "/private/tmp/polars-check"
     ]
   }
 }
