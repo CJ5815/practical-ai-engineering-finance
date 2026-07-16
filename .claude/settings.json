@@ -35,7 +35,9 @@
       "Bash(sips -g pixelWidth -g pixelHeight json-response.png saved-filings-output.png)",
       "Bash(rm -f /Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-04/*.svg *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://www.sec.gov/search-filings/edgar-application-programming-interfaces\")",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -H \"User-Agent: Practical AI Engineering Course student@example.com\" \"https://www.sec.gov/search-filings/edgar-application-programming-interfaces\")"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -H \"User-Agent: Practical AI Engineering Course student@example.com\" \"https://www.sec.gov/search-filings/edgar-application-programming-interfaces\")",
+      "Bash(file *.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight *.png)"
     ],
     "additionalDirectories": [
       "/private/tmp",

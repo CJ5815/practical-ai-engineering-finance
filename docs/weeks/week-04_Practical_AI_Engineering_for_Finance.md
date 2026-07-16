@@ -82,10 +82,20 @@ Your Python code                          SEC's server
       |   <----------------------  2. HTTP response
       |        status code + JSON body            |
 ```
+![API request-response sequence](images/week-04/http.png)
 
-A **REST API** (the style almost all modern web APIs follow) organizes data as resources, each with its own URL — `/submissions/CIK0000320193.json` is "the submissions resource for CIK 0000320193."
+A **REST API** (the style almost all modern web APIs follow, including SEC EDGAR) is built around a few conventions:
+
+- **Resources, each with their own URL.** `/submissions/CIK0000320193.json` is "the submissions resource for CIK 0000320193" — the URL identifies *what* you want, not *how* to get it.
+- **Standard HTTP methods act on those resources** (§1.2) — `GET` to read a resource, `POST` to create one, and so on. The same verb means the same thing no matter which resource it's applied to.
+- **Stateless requests.** Each request carries everything the server needs to handle it (the URL, headers, any body) — the server doesn't remember your previous requests. That's why every example this week resends the `User-Agent` header on every single call, rather than "logging in" once.
+- **A representation of the resource comes back in the response** — almost always JSON for modern APIs (§1.3), though REST itself doesn't require any particular format.
+
+REST isn't a strict protocol with an official spec to validate against, the way HTTP itself is — it's a set of conventions. SEC EDGAR follows them closely enough that everything above applies directly.
 
 ## 1.2 HTTP Methods and Status Codes
+
+Every HTTP request has a **method** — a verb telling the server what you want to do — and every response has a **status code** — a three-digit number telling you what happened. Together they're most of what you need to read any API interaction, before ever looking at the response body.
 
 | Method | Purpose |
 |---|---|
@@ -113,7 +123,14 @@ curl -H "User-Agent: Your Name your.email@example.com" \
   https://data.sec.gov/submissions/CIK0000000000.json
 ```
 
-`CIK0000000000` isn't a real company, so SEC's server correctly responds `404 Not Found`.
+Breaking this command down piece by piece:
+
+- **`curl`** is a command-line program that sends an HTTP request and prints the response — the same request/response cycle from §1.1, without writing any Python.
+- **`-H "User-Agent: Your Name your.email@example.com"`** adds a request *header*: metadata sent alongside the request, separate from the URL. `-H` can be repeated to add more headers. SEC specifically inspects the `User-Agent` header and rejects requests that don't identify a real caller (§1.4).
+- **The URL** is the resource being requested — here, the submissions resource for CIK `0000000000`.
+- **The trailing `\`** just tells the shell "this command continues on the next line" — it's a line-break for readability, not part of the request.
+
+`CIK0000000000` isn't a real company, so SEC's server correctly responds `404 Not Found` — the server understood the request perfectly; the resource simply doesn't exist. Add `-i` to the command (`curl -i -H ...`) to see the status code and response headers along with the body, instead of just the body.
 
 ## 1.3 What Is JSON?
 
@@ -130,6 +147,28 @@ curl -H "User-Agent: Your Name your.email@example.com" \
 
 Python's `json` module (and `httpx`'s `.json()` method, used starting Day 2) converts between the two automatically.
 
+A few things worth knowing about JSON specifically:
+
+- **It's language-independent.** JSON isn't a Python format — it's a plain-text convention every major language can read and write, which is exactly why it works as a universal format between a Python client and whatever language a server happens to be written in.
+- **Objects nest.** A JSON object's values can themselves be objects or arrays, arbitrarily deep. The SEC submissions response looks like this in outline:
+
+  ```json
+  {
+    "name": "Apple Inc.",
+    "tickers": ["AAPL"],
+    "filings": {
+      "recent": {
+        "form": ["10-K", "4"],
+        "filingDate": ["2026-01-02", "2026-01-01"]
+      }
+    }
+  }
+  ```
+
+  `edgar.py`'s `extract_recent_filings` (§4.1) exists specifically to reach into that nested `filings.recent` structure and pull out the parts you need.
+- **JSON keys are always strings**, always double-quoted (`"key"`, never `'key'` or bare `key`). Python dict keys can be almost anything (`int`, tuples, etc.); JSON is stricter.
+- **Key order and whitespace aren't meaningful.** `{"a": 1, "b": 2}` and `{"b": 2, "a": 1}` are the same data; formatting is purely for human readability. `json.dumps(..., indent=2)` (§3.3) adds whitespace back in for exactly that reason.
+
 ## 1.4 The SEC EDGAR API
 
 This course uses the **SEC's EDGAR API** (`data.sec.gov` and `www.sec.gov`) — free, no API key, real data, and directly relevant to the equity-research capstone. SEC's only requirement is a descriptive `User-Agent` header identifying who's calling, e.g. `"Your Name your.email@example.com"` — without one, requests are often rejected. That's what the `SEC_USER_AGENT` variable in `.env.example` is for; Week 5 covers environment variables and secrets in depth, but you'll use one starting Day 2 this week.
@@ -139,6 +178,8 @@ See the [official EDGAR API documentation](https://www.sec.gov/search-filings/ed
 ## Day 1 Activity
 
 Using `curl` (or a browser), fetch `https://data.sec.gov/submissions/CIK0000320193.json` with a `User-Agent` header identifying yourself, and note: what's the HTTP status code, and what are the top-level keys in the JSON response?
+
+![Example curl command, status code, and top-level JSON keys](images/week-04/curl_example.png)
 
 ---
 
@@ -154,6 +195,11 @@ response = httpx.get("https://www.sec.gov/files/company_tickers.json", headers=h
 
 print(response.status_code)   # 200
 ```
+
+![Minimal GET Request Example Using CURL](images/week-04/curl_example.png)
+
+
+
 
 ## 2.2 Inspecting the Response
 
@@ -220,7 +266,13 @@ filing = FilingRecord(
 )
 ```
 
-If a required field is missing or the wrong type, pydantic raises a clear error immediately — right where the bad data entered your program, not somewhere downstream.
+A plain Python class (or dictionary) would happily accept `form=123` or a missing `accession_number` without complaint — the mistake would only surface later, wherever the bad value finally caused a crash or a wrong answer. `FilingRecord(BaseModel)` checks every field the moment you construct it:
+
+- If a field is missing, or has the wrong type and can't be coerced (`form=123` where a `str` was expected), pydantic raises a `pydantic.ValidationError` listing exactly which field failed and why.
+- If a field *can* be reasonably coerced (like the string `"123"` for a field typed `int`), pydantic converts it rather than rejecting it — matching the type hints you already write on every function (Week 2 §3.1), but enforced at runtime instead of only checked by your editor.
+- `filing.model_dump()` (used in `save_filings_json`, §3.3) converts a validated `FilingRecord` back into a plain dict, ready for `json.dump`.
+
+The net effect: if a required field is missing or the wrong type, pydantic raises a clear error immediately — right where the bad data entered your program, not somewhere downstream.
 
 ## 3.3 Saving Clean Output
 
@@ -288,6 +340,7 @@ Putting the whole week together:
 find_cik()          fetch_submissions()      extract_recent_filings()      save_filings_json()
  (pure, tested)  -->   (network call)     -->   (pure, tested)         -->    (file I/O)
 ```
+![Flow](images/week-04/flow_api.png)
 
 ## Day 4 Activity
 
