@@ -39,7 +39,9 @@ nav:
       - Week 4:
           - Working with APIs: weeks/week-04.md
           - Full Lesson: weeks/week-04_Practical_AI_Engineering_for_Finance.md
-      - Week 5 — Reliable API Clients: weeks/week-05.md
+      - Week 5:
+          - Reliable API Clients: weeks/week-05.md
+          - Full Lesson: weeks/week-05_Practical_AI_Engineering_for_Finance.md
       - Week 6 — Prompt Engineering: weeks/week-06.md
       - Week 7 — LLM Application Basics: weeks/week-07.md
       - Week 8 — Embeddings: weeks/week-08.md

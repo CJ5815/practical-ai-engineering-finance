@@ -1,5 +1,7 @@
 # Week 5: Reliable API Clients
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-05_Practical_AI_Engineering_for_Finance.md](week-05_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Build API code that handles configuration, timeouts, errors, pagination, and rate limits.

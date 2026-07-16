@@ -37,13 +37,19 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://www.sec.gov/search-filings/edgar-application-programming-interfaces\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -H \"User-Agent: Practical AI Engineering Course student@example.com\" \"https://www.sec.gov/search-filings/edgar-application-programming-interfaces\")",
       "Bash(file *.png)",
-      "Bash(sips -g pixelWidth -g pixelHeight *.png)"
+      "Bash(sips -g pixelWidth -g pixelHeight *.png)",
+      "Bash(curl -s -H \"User-Agent: Practical AI Engineering Course student@example.com\" \"https://data.sec.gov/submissions/CIK0000320193-submissions-001.json\")",
+      "Bash(rsvg-convert -w 640 -h 360 retry-with-backoff.svg -o retry-with-backoff.png)",
+      "Bash(rsvg-convert -w 640 -h 360 mocktransport-test-run.svg -o mocktransport-test-run.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight retry-with-backoff.png mocktransport-test-run.png)",
+      "Bash(rm -f /Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-05/*.svg *)"
     ],
     "additionalDirectories": [
       "/private/tmp",
       "/Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-03",
       "/private/tmp/polars-check",
-      "/Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-04"
+      "/Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-04",
+      "/Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/docs/weeks/images/week-05"
     ]
   }
 }
