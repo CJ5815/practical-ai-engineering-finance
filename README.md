@@ -1,11 +1,12 @@
 # Practical AI Engineering for Finance
 
-A 16-week, undergraduate-level course in Python, APIs, prompt engineering,
+A 17-week, undergraduate-level course in Python, APIs, prompt engineering,
 vector databases, retrieval-augmented generation (RAG), evaluation, testing,
 and deployment.
 
-**Schedule:** 1 hour per day, 4 days per week  
-**Total instructional time:** 64 hours  
+**Schedule:** 1 hour per day, 4 days per week (Week 17 is an optional,
+6-day advanced extension)  
+**Total instructional time:** 70 hours  
 **Audience:** College seniors in finance, business analytics, data science,
 computer science, or related majors  
 **Capstone:** AI-Powered Equity Research Assistant

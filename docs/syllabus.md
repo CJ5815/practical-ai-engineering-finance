@@ -20,13 +20,16 @@ By the end of the course, the student will be able to:
 8. Write unit and integration tests.
 9. Create a small FastAPI application.
 10. Deploy and demonstrate a working AI application.
+11. (Optional, Week 17) Build a reusable investment-philosophy skill: an
+    evidence-based thesis, ratio analysis, and a multi-year DCF model
+    delivered as a real Excel workbook.
 
 ## Schedule
 
-- Length: 16 weeks
-- Meetings: 4 sessions per week
+- Length: 17 weeks (Weeks 1–16 core; Week 17 optional/advanced)
+- Meetings: 4 sessions per week (Week 17 runs 6 sessions)
 - Session length: 1 hour
-- Total: 64 hours
+- Total: 70 hours
 
 ## Assessment
 
