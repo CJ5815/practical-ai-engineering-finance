@@ -17,7 +17,15 @@ dependencies = [
     "statsmodels>=0.14",
     "polars>=1.0",
     "openpyxl>=3.1",
+    "duckdb>=1.0",
+    "typer>=0.12",
+    "rich>=13.7",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.2",
 ]
+
+[project.scripts]
+sec-thesis = "sec_thesis.cli:app"
 
 [project.optional-dependencies]
 dev = [

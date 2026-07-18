@@ -1,12 +1,12 @@
 # Practical AI Engineering for Finance
 
-A 17-week, undergraduate-level course in Python, APIs, prompt engineering,
+An 18-week, undergraduate-level course in Python, APIs, prompt engineering,
 vector databases, retrieval-augmented generation (RAG), evaluation, testing,
 and deployment.
 
-**Schedule:** 1 hour per day, 4 days per week (Week 17 is an optional,
-6-day advanced extension)  
-**Total instructional time:** 70 hours  
+**Schedule:** 1 hour per day, 4 days per week (Weeks 17–18 are optional,
+6-day advanced extensions)  
+**Total instructional time:** 76 hours  
 **Audience:** College seniors in finance, business analytics, data science,
 computer science, or related majors  
 **Capstone:** AI-Powered Equity Research Assistant
@@ -25,11 +25,27 @@ docs/                    Course website and lessons
   weeks/                 Weekly lesson plans
   projects/              Project specifications
   resources/             Reading and reference materials
-src/                     Reusable Python code
+src/
+  ai_finance_course/     Reusable Python code built up week by week (Weeks 1-17)
+  sec_thesis/            Standalone SEC-filing research CLI (Week 18+, own CLAUDE.md)
+examples/                Runnable per-week demo scripts and notebooks
 tests/                   Automated tests
 notebooks/               Jupyter notebooks
 data/sample/             Small, non-confidential sample datasets
 .github/workflows/       Automated testing and site deployment
+```
+
+## sec_thesis CLI (Week 18+)
+
+`sec_thesis` is a standalone CLI tool built starting Week 18 — see
+[`src/sec_thesis/CLAUDE.md`](src/sec_thesis/CLAUDE.md) for its full project
+spec. After `pip install -e .` (below), set `SEC_USER_AGENT` in `.env`
+(see `.env.example`) and run:
+
+```bash
+sec-thesis resolve-cik AAPL
+sec-thesis list-filings AAPL --forms 10-K,10-Q,8-K
+sec-thesis fetch-filings AAPL
 ```
 
 ## Start Here

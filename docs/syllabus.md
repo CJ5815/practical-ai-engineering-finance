@@ -23,13 +23,16 @@ By the end of the course, the student will be able to:
 11. (Optional, Week 17) Build a reusable investment-philosophy skill: an
     evidence-based thesis, ratio analysis, and a multi-year DCF model
     delivered as a real Excel workbook.
+12. (Optional, Week 18) Build the foundation of a standalone SEC-filing
+    research CLI: a caching, rate-limited, retrying API client, CIK
+    resolution, and a DuckDB-backed filing index.
 
 ## Schedule
 
-- Length: 17 weeks (Weeks 1–16 core; Week 17 optional/advanced)
-- Meetings: 4 sessions per week (Week 17 runs 6 sessions)
+- Length: 18 weeks (Weeks 1–16 core; Weeks 17–18 optional/advanced)
+- Meetings: 4 sessions per week (Weeks 17–18 each run 6 sessions)
 - Session length: 1 hour
-- Total: 70 hours
+- Total: 76 hours
 
 ## Assessment
 
