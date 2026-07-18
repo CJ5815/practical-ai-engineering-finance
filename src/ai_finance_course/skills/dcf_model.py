@@ -9,7 +9,6 @@ what a DCF is.
 
 from __future__ import annotations
 
-import openpyxl
 from openpyxl.utils import get_column_letter
 from openpyxl.workbook.workbook import Workbook
 from pydantic import BaseModel
