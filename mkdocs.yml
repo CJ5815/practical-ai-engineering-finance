@@ -23,6 +23,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Syllabus: syllabus.md
+  - Papers and Reading: resources/readings.md
   - Setup:
       - Mac and VS Code: setup/mac-vscode.md
       - Git and GitHub: setup/git-github.md
@@ -63,5 +64,4 @@ nav:
       - Capstone: projects/capstone.md
       - Grading Rubric: projects/rubric.md
   - Resources:
-      - Papers and Reading: resources/readings.md
       - Interview Preparation: resources/interview-prep.md
