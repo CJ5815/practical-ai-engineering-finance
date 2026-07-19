@@ -6,18 +6,18 @@ course project.
 
 ## Python and Development
 
-- *Python Crash Course* — Eric Matthes, selected chapters
-- *Automate the Boring Stuff with Python* — Al Sweigart, selected chapters
-- Official Python tutorial
-- Official VS Code Python documentation
-- Pro Git, Chapters 1–3
+- *Python Crash Course* — Eric Matthes, selected chapters. [Official book page](https://nostarch.com/python-crash-course-3rd-edition) (No Starch Press) — this is a paid, copyrighted book; no PDF is provided here.
+- *Automate the Boring Stuff with Python* — Al Sweigart, selected chapters. Read free at the [official site](https://automatetheboringstuff.com/), published there directly by the author under a Creative Commons license.
+- [Official Python tutorial](https://docs.python.org/3/tutorial/index.html)
+- [Official VS Code Python documentation](https://code.visualstudio.com/docs/languages/python)
+- [**Pro Git**](papers/pro-git.pdf), Chapters 1–3 — the official, freely licensed (CC BY-NC-SA) PDF of the full book; read "Getting Started," "Git Basics," and "Git Branching."
 
 ## APIs and Software
 
-- HTTP and REST introductory documentation
-- Twelve-Factor App, especially configuration and logs
-- FastAPI tutorial
-- pytest documentation
+- [HTTP and REST introductory documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) (MDN)
+- Twelve-Factor App, especially [configuration](https://12factor.net/config) and [logs](https://12factor.net/logs)
+- [FastAPI tutorial](https://fastapi.tiangolo.com/tutorial/)
+- [pytest documentation](https://docs.pytest.org/en/stable/)
 
 ## LLMs and Prompting
 
