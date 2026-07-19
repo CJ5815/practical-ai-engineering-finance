@@ -48,7 +48,8 @@
       "Bash(cd /Users/josephcerniglia/Documents/python/practical-ai-engineering-finance *)",
       "Bash(curl -s -o /dev/null -w '%{http_code}\\\\n' -H 'User-Agent: Practical AI Engineering Course student@example.com' https://www.sec.gov/Archives/edgar/data/320193/000114036126025622/xslF345X06/form4.xml)",
       "Bash(rm -rf /tmp/sec-thesis-cache *)",
-      "Bash(sips -g pixelWidth -g pixelHeight docs/weeks/images/week-04/json-response.png)"
+      "Bash(sips -g pixelWidth -g pixelHeight docs/weeks/images/week-04/json-response.png)",
+      "Bash(rm -rf /tmp/ruff-check site src/ai_finance_course.egg-info src/sec_thesis.egg-info *)"
     ],
     "additionalDirectories": [
       "/private/tmp",
@@ -59,7 +60,8 @@
       "/Users/josephcerniglia/Documents/python/practical-ai-engineering-finance/.claude/skills",
       "/private/tmp/w17-final",
       "/private/tmp/sec-thesis-cache",
-      "/private/tmp/sec-thesis-final"
+      "/private/tmp/sec-thesis-final",
+      "/private/tmp/ruff-check"
     ]
   }
 }
