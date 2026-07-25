@@ -60,6 +60,9 @@ nav:
       - Week 18:
           - sec_thesis (Phase 1): weeks/week-18.md
           - Full Lesson: weeks/week-18_Practical_AI_Engineering_for_Finance.md
+      - Week 19:
+          - Reading — Loops, Expertise, and Skills: weeks/week-19.md
+          - Full Lesson: weeks/week-19_Practical_AI_Engineering_for_Finance.md
   - Projects:
       - Capstone: projects/capstone.md
       - Grading Rubric: projects/rubric.md

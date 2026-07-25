@@ -26,13 +26,16 @@ By the end of the course, the student will be able to:
 12. (Optional, Week 18) Build the foundation of a standalone SEC-filing
     research CLI: a caching, rate-limited, retrying API client, CIK
     resolution, and a DuckDB-backed filing index.
+13. (Optional, Week 19) Read and critically connect current research on
+    agentic loops, domain expertise, and self-evolving agent skills to this
+    project's own architecture.
 
 ## Schedule
 
-- Length: 18 weeks (Weeks 1–16 core; Weeks 17–18 optional/advanced)
-- Meetings: 4 sessions per week (Weeks 17–18 each run 6 sessions)
+- Length: 19 weeks (Weeks 1–16 core; Weeks 17–19 optional/advanced)
+- Meetings: 4 sessions per week (Weeks 17–18 each run 6 sessions; Week 19 runs the standard 4)
 - Session length: 1 hour
-- Total: 76 hours
+- Total: 80 hours
 
 ## Assessment
 

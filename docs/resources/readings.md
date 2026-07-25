@@ -78,6 +78,16 @@ A good reading sequence is **HELM → RAGAS paper → Ragas quickstart → Ragas
 - Chen et al., [**FinQA: A Dataset of Numerical Reasoning over Financial Data**](papers/finqa.pdf) — numerical reasoning over financial tables and text, directly relevant to the capstone (10-Ks mix both).
 - Yang et al., [**Large Language Models in Finance: A Survey**](papers/llms-in-finance-survey.pdf) — a broad survey tying the finance-LLM space together; a good starting point for this section.
 
+## Agentic Engineering and Self-Evolving Skills
+
+Week 19's readings, on the systems and practices around directing coding agents rather than on a specific model architecture:
+
+- [**Loop Engineering: The Anthropic Playbook for Designing Systems That Prompt Your Agents**](papers/loop-engineering.pdf) — a field study of autonomous agent loops (discovery, handoff, verification, persistence, scheduling), including a generator/evaluator separation directly relevant to any future `sec_thesis` automation.
+- Hitzig et al., [**Agentic Coding and Persistent Returns to Expertise**](papers/agentic-coding-returns-to-expertise.pdf) (Anthropic) — an empirical study of ~400,000 Claude Code sessions finding that domain expertise, not coding background, predicts success. The [appendix](papers/agentic-coding-returns-to-expertise-appendix.pdf) has the full classifier prompts (work mode, expertise, occupation, session outcome) and the regression tables behind Section 4 — read it if you want to see exactly how "expertise" and "success" were operationalized, not just the headline numbers.
+- Yang et al., [**SkillOpt: Executive Strategy for Self-Evolving Agent Skills**](papers/skillopt.pdf) (Microsoft et al.) — treats an agent skill document as a trainable artifact, edited under bounded, validation-gated updates modeled on deep-learning optimization.
+
+See [Week 19](../weeks/week-19_Practical_AI_Engineering_for_Finance.md) for how each of these connects to this project's own `sec_thesis` CLI and `investment-philosopher` skill.
+
 ## Reading Note Template
 
 For every paper, answer:
