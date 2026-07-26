@@ -29,13 +29,16 @@ By the end of the course, the student will be able to:
 13. (Optional, Week 19) Read and critically connect current research on
     agentic loops, domain expertise, and self-evolving agent skills to this
     project's own architecture.
+14. (Optional, Week 20) Use Claude to extract entities and relationships
+    from SEC filings and represent them as a queryable, visualizable
+    knowledge graph with NetworkX.
 
 ## Schedule
 
-- Length: 19 weeks (Weeks 1–16 core; Weeks 17–19 optional/advanced)
-- Meetings: 4 sessions per week (Weeks 17–18 each run 6 sessions; Week 19 runs the standard 4)
+- Length: 20 weeks (Weeks 1–16 core; Weeks 17–20 optional/advanced)
+- Meetings: 4 sessions per week (Weeks 17–18 each run 6 sessions; Weeks 19–20 each run the standard 4)
 - Session length: 1 hour
-- Total: 80 hours
+- Total: 84 hours
 
 ## Assessment
 

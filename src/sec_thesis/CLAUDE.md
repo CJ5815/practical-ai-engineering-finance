@@ -100,10 +100,18 @@ The following commands should eventually work:
 `resolve-cik`, `list-filings`, and `fetch-filings`. Fully deterministic,
 no LLM involved.
 
-**Not yet built:** `filing_parser.py`, `xbrl.py`, `llm/`, `analysis/`,
-`reporting/`, and the `extract-sections`, `build-thesis`, `update-thesis`,
-`show-catalysts` commands. These are candidates for later phases (Weeks
-19+), each following rule 1 — small, testable phases, not one large jump.
+**Phase 2 (Week 20) — done:** `filing_parser.py` (HTML -> plain text),
+`llm/extraction.py` (entity/relationship extraction via an injected
+`generate` callable, Pydantic-validated), `graph.py` (build/query/persist/
+visualize a NetworkX knowledge graph), and `cli.py` additions
+`extract-relationships` and `show-graph`. The LLM is used only for
+extraction (rule 7); graph construction and querying are deterministic
+(rule 6).
+
+**Not yet built:** `xbrl.py`, `analysis/`, `reporting/`, and the
+`extract-sections`, `build-thesis`, `update-thesis`, `show-catalysts`
+commands. These are candidates for later phases, each following rule 1 —
+small, testable phases, not one large jump.
 
 This package is intentionally standalone: it does not import from
 `ai_finance_course` (the course's teaching package), even though

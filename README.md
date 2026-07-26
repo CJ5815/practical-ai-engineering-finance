@@ -1,13 +1,13 @@
 # Practical AI Engineering for Finance
 
-A 19-week, undergraduate-level course in Python, APIs, prompt engineering,
+A 20-week, undergraduate-level course in Python, APIs, prompt engineering,
 vector databases, retrieval-augmented generation (RAG), evaluation, testing,
 and deployment.
 
-**Schedule:** 1 hour per day, 4 days per week (Weeks 17–19 are optional,
-advanced extensions; Weeks 17–18 each run 6 sessions, Week 19 is a standard
-4-session reading week)  
-**Total instructional time:** 80 hours  
+**Schedule:** 1 hour per day, 4 days per week (Weeks 17–20 are optional,
+advanced extensions; Weeks 17–18 each run 6 sessions, Weeks 19–20 are
+standard 4-session weeks)  
+**Total instructional time:** 84 hours  
 **Audience:** College seniors in finance, business analytics, data science,
 computer science, or related majors  
 **Capstone:** AI-Powered Equity Research Assistant
@@ -47,6 +47,14 @@ spec. After `pip install -e .` (below), set `SEC_USER_AGENT` in `.env`
 sec-thesis resolve-cik AAPL
 sec-thesis list-filings AAPL --forms 10-K,10-Q,8-K
 sec-thesis fetch-filings AAPL
+```
+
+Phase 2 (Week 20) adds Claude-powered entity/relationship extraction and a
+NetworkX knowledge graph — also set `LLM_API_KEY`/`LLM_MODEL` in `.env`:
+
+```bash
+sec-thesis extract-relationships AAPL
+sec-thesis show-graph AAPL
 ```
 
 ## Start Here

@@ -10,3 +10,4 @@ site/
 *.pyc
 .ipynb_checkpoints/
 data/raw/
+*.egg-info/
