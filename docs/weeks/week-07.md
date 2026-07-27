@@ -1,5 +1,7 @@
 # Week 7: LLM Application Basics
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-07_Practical_AI_Engineering_for_Finance.md](week-07_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Call an LLM through an API and validate structured output.

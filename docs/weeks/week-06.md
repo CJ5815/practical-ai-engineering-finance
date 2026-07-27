@@ -1,5 +1,7 @@
 # Week 6: Prompt Engineering
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-06_Practical_AI_Engineering_for_Finance.md](week-06_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Write prompts that specify role, task, evidence, constraints, and output format.

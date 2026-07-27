@@ -1,5 +1,7 @@
 # Week 8: Embeddings
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-08_Practical_AI_Engineering_for_Finance.md](week-08_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Understand semantic representations and compare text using vector similarity.
