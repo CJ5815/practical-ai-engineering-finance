@@ -1,5 +1,7 @@
 # Week 9: Vector Databases
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-09_Practical_AI_Engineering_for_Finance.md](week-09_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Store, retrieve, filter, and update document chunks using a vector database.

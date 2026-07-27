@@ -19,6 +19,8 @@ Weeks 6–7 were about *asking* an LLM to reason over text you already handed it
 pip install -e ".[rag]"
 ```
 
+**If you're on an Intel Mac:** check your Python version first — `python --version`. PyTorch (which `sentence-transformers` depends on) stopped publishing Intel-macOS builds after version 2.2.2, and that release has no Python 3.13 build at all. If your `.venv` was created with Python 3.13, `pip install -e ".[rag]"` will fail with a dependency resolution error, or in some cases install successfully but crash on import. The fix: create a separate `.venv` for this and the following weeks using Python 3.11 or 3.12 instead (`python3.11 -m venv .venv`), then reinstall (`pip install -e ".[dev,docs,rag]"`). This course's own `pyproject.toml` pins `sentence-transformers`, `transformers`, `torch`, and `numpy` to a combination verified to work together on Python 3.11 — Apple Silicon, Linux, and Windows users are unaffected and can ignore this note.
+
 ---
 
 ## Contents

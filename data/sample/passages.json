@@ -1,0 +1,42 @@
+[
+  {
+    "ticker": "AAPL",
+    "doc_type": "earnings",
+    "text": "Apple's revenue grew 8% year over year, driven by strong iPhone sales."
+  },
+  {
+    "ticker": "AAPL",
+    "doc_type": "earnings",
+    "text": "Quarterly earnings exceeded analyst expectations across most segments."
+  },
+  {
+    "ticker": "AAPL",
+    "doc_type": "risk",
+    "text": "The Company depends on a limited number of suppliers for key components."
+  },
+  {
+    "ticker": "MSFT",
+    "doc_type": "earnings",
+    "text": "Microsoft's cloud segment revenue increased sharply, offsetting softer PC sales."
+  },
+  {
+    "ticker": "MSFT",
+    "doc_type": "risk",
+    "text": "Increased competition in cloud infrastructure could pressure long-term margins."
+  },
+  {
+    "ticker": "MACRO",
+    "doc_type": "macro",
+    "text": "The Federal Reserve raised interest rates by 25 basis points."
+  },
+  {
+    "ticker": "MACRO",
+    "doc_type": "macro",
+    "text": "Currency fluctuations could adversely affect reported international results."
+  },
+  {
+    "ticker": "MACRO",
+    "doc_type": "macro",
+    "text": "Inflation data came in slightly below economists' expectations this quarter."
+  }
+]

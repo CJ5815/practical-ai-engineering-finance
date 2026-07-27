@@ -41,7 +41,16 @@ docs = [
 ]
 rag = [
     "chromadb>=0.5",
-    "sentence-transformers>=3.0",
+    # Pinned together deliberately: recent sentence-transformers/transformers
+    # releases require torch>=2.4, but PyTorch stopped publishing Intel-macOS
+    # wheels after 2.2.2 (and 2.2.2 has no Python 3.13 build at all). This
+    # combination is the newest one verified to actually import and run —
+    # on an Intel Mac, also use Python 3.11 or 3.12 for this extra (see
+    # Week 8's lesson for the full explanation).
+    "sentence-transformers>=3.0,<5",
+    "transformers<5",
+    "torch==2.2.2",
+    "numpy<2",
 ]
 api = [
     "fastapi>=0.111",
