@@ -1,5 +1,7 @@
 # Week 10: Basic RAG
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-10_Practical_AI_Engineering_for_Finance.md](week-10_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Combine retrieval and generation to answer questions using supplied evidence.
