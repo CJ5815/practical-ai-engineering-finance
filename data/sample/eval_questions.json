@@ -1,0 +1,26 @@
+[
+  {
+    "query": "did the company beat earnings expectations?",
+    "expected_ticker": "AAPL"
+  },
+  {
+    "query": "did MSFT smash analyst estimates?",
+    "expected_ticker": "MSFT"
+  },
+  {
+    "query": "what did the Fed do with interest rates?",
+    "expected_ticker": "MACRO"
+  },
+  {
+    "query": "is there supplier concentration risk?",
+    "expected_ticker": "AAPL"
+  },
+  {
+    "query": "are consumer price increases cooling off?",
+    "expected_ticker": "MACRO"
+  },
+  {
+    "query": "what risk does increased competition pose?",
+    "expected_ticker": "MSFT"
+  }
+]

@@ -1,5 +1,7 @@
 # Week 11: Improved RAG
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-11_Practical_AI_Engineering_for_Finance.md](week-11_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Improve retrieval through metadata, hybrid search, query rewriting, and reranking.
