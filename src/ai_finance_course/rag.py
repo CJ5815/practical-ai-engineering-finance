@@ -15,6 +15,7 @@ from collections.abc import Callable
 from chromadb.api.models.Collection import Collection
 from pydantic import BaseModel
 
+from ai_finance_course.json_utils import extract_json
 from ai_finance_course.vector_store import query_collection
 
 
@@ -65,15 +66,6 @@ OUTPUT FORMAT: Return ONLY valid JSON, no other text, matching this shape:
 {{"answer": "one or two sentences", "citations": [1, 2]}}"""
 
 
-def _extract_json(text: str) -> str:
-    """Strip a ```json fence around the response, if the model added one."""
-    stripped = text.strip()
-    if stripped.startswith("```"):
-        stripped = stripped.strip("`")
-        stripped = stripped.removeprefix("json").strip()
-    return stripped
-
-
 def answer_question(
     query: str,
     collection: Collection,
@@ -109,7 +101,7 @@ def answer_question(
     evidence = query_collection(collection, query, n_results=n_results, where=where)
     prompt = build_grounded_prompt(query, evidence)
     raw_response = generate(prompt)
-    parsed = json.loads(_extract_json(raw_response))
+    parsed = json.loads(extract_json(raw_response))
     answer = RAGAnswer(**parsed)
 
     out_of_range = [c for c in answer.citations if not (1 <= c <= len(evidence))]

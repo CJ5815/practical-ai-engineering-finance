@@ -1,26 +1,77 @@
 [
   {
     "query": "did the company beat earnings expectations?",
-    "expected_ticker": "AAPL"
+    "expected_ticker": "AAPL",
+    "relevant_texts": ["Quarterly earnings exceeded analyst expectations across most segments."]
   },
   {
     "query": "did MSFT smash analyst estimates?",
-    "expected_ticker": "MSFT"
+    "expected_ticker": "MSFT",
+    "relevant_texts": ["Microsoft's cloud segment revenue increased sharply, offsetting softer PC sales."]
   },
   {
     "query": "what did the Fed do with interest rates?",
-    "expected_ticker": "MACRO"
+    "expected_ticker": "MACRO",
+    "relevant_texts": ["The Federal Reserve raised interest rates by 25 basis points."]
   },
   {
     "query": "is there supplier concentration risk?",
-    "expected_ticker": "AAPL"
+    "expected_ticker": "AAPL",
+    "relevant_texts": ["The Company depends on a limited number of suppliers for key components."]
   },
   {
     "query": "are consumer price increases cooling off?",
-    "expected_ticker": "MACRO"
+    "expected_ticker": "MACRO",
+    "relevant_texts": ["Inflation data came in slightly below economists' expectations this quarter."]
   },
   {
     "query": "what risk does increased competition pose?",
-    "expected_ticker": "MSFT"
+    "expected_ticker": "MSFT",
+    "relevant_texts": ["Increased competition in cloud infrastructure could pressure long-term margins."]
+  },
+  {
+    "query": "did Apple's iPhone sales help revenue?",
+    "expected_ticker": "AAPL",
+    "relevant_texts": ["Apple's revenue grew 8% year over year, driven by strong iPhone sales."]
+  },
+  {
+    "query": "how did Microsoft's cloud business do?",
+    "expected_ticker": "MSFT",
+    "relevant_texts": ["Microsoft's cloud segment revenue increased sharply, offsetting softer PC sales."]
+  },
+  {
+    "query": "could currency swings hurt international results?",
+    "expected_ticker": "MACRO",
+    "relevant_texts": ["Currency fluctuations could adversely affect reported international results."]
+  },
+  {
+    "query": "is Apple reliant on a small number of component suppliers?",
+    "expected_ticker": "AAPL",
+    "relevant_texts": ["The Company depends on a limited number of suppliers for key components."]
+  },
+  {
+    "query": "did inflation come in below forecasts?",
+    "expected_ticker": "MACRO",
+    "relevant_texts": ["Inflation data came in slightly below economists' expectations this quarter."]
+  },
+  {
+    "query": "what happened with the central bank's rate decision?",
+    "expected_ticker": "MACRO",
+    "relevant_texts": ["The Federal Reserve raised interest rates by 25 basis points."]
+  },
+  {
+    "query": "is Microsoft facing margin pressure from rivals?",
+    "expected_ticker": "MSFT",
+    "relevant_texts": ["Increased competition in cloud infrastructure could pressure long-term margins."]
+  },
+  {
+    "query": "were iPhone sales strong this quarter?",
+    "expected_ticker": "AAPL",
+    "relevant_texts": ["Apple's revenue grew 8% year over year, driven by strong iPhone sales."]
+  },
+  {
+    "query": "how are exchange rate moves affecting overseas revenue?",
+    "expected_ticker": "MACRO",
+    "relevant_texts": ["Currency fluctuations could adversely affect reported international results."]
   }
 ]

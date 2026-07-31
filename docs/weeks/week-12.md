@@ -1,5 +1,7 @@
 # Week 12: Evaluation
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-12_Practical_AI_Engineering_for_Finance.md](week-12_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Measure whether retrieval and generated answers are relevant, grounded, and useful.
