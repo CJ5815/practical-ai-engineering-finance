@@ -64,9 +64,11 @@ def test_404_raises_without_retry(tmp_path) -> None:
         calls["count"] += 1
         return httpx.Response(404, json={"error": "not found"})
 
-    with SECClient(_settings(tmp_path), transport=httpx.MockTransport(handler)) as client:
-        with pytest.raises(SECClientError, match="404"):
-            client.get_json("https://data.sec.gov/missing.json", use_cache=False)
+    with (
+        SECClient(_settings(tmp_path), transport=httpx.MockTransport(handler)) as client,
+        pytest.raises(SECClientError, match="404"),
+    ):
+        client.get_json("https://data.sec.gov/missing.json", use_cache=False)
 
     assert calls["count"] == 1
 

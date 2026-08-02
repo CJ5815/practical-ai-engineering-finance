@@ -8,6 +8,7 @@ ticker or form type with SQL instead of re-parsing JSON every time.
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Self
 
 import duckdb
 
@@ -50,7 +51,7 @@ class FilingsDB:
         self._conn = duckdb.connect(str(path))
         self._conn.execute(_SCHEMA)
 
-    def __enter__(self) -> FilingsDB:
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(self, *exc_info: object) -> None:

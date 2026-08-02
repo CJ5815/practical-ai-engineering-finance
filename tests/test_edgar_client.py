@@ -66,9 +66,8 @@ def test_404_raises_without_retry() -> None:
         calls["count"] += 1
         return httpx.Response(404, json={"error": "not found"})
 
-    with _client(handler) as client:
-        with pytest.raises(EdgarAPIError, match="404"):
-            client.get_recent_filings("0000000000")
+    with _client(handler) as client, pytest.raises(EdgarAPIError, match="404"):
+        client.get_recent_filings("0000000000")
 
     assert calls["count"] == 1
 
@@ -80,9 +79,11 @@ def test_retries_exhausted_raises() -> None:
         calls["count"] += 1
         return httpx.Response(500, json={"error": "server error"})
 
-    with _client(handler, max_retries=2) as client:
-        with pytest.raises(EdgarAPIError, match="failed after 3 attempts"):
-            client.get_recent_filings("0000320193")
+    with (
+        _client(handler, max_retries=2) as client,
+        pytest.raises(EdgarAPIError, match="failed after 3 attempts"),
+    ):
+        client.get_recent_filings("0000320193")
 
     assert calls["count"] == 3
 

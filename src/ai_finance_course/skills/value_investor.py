@@ -17,11 +17,20 @@ import json
 import textwrap
 from collections.abc import Callable
 
-from matplotlib.figure import Figure
 from matplotlib import pyplot as plt
+from matplotlib.figure import Figure
 
-from ai_finance_course.skills.base import Catalyst, EvidenceChunk, FinancialStatements, InvestmentThesis
-from ai_finance_course.skills.dcf_model import DCFAssumptions, intrinsic_value_per_share, margin_of_safety_pct
+from ai_finance_course.skills.base import (
+    Catalyst,
+    EvidenceChunk,
+    FinancialStatements,
+    InvestmentThesis,
+)
+from ai_finance_course.skills.dcf_model import (
+    DCFAssumptions,
+    intrinsic_value_per_share,
+    margin_of_safety_pct,
+)
 from ai_finance_course.skills.financial_model import calculate_all_ratios
 
 PHILOSOPHY_NAME = "Value Investing (Graham/Buffett)"

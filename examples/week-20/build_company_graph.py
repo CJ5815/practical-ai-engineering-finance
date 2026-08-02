@@ -91,7 +91,7 @@ def main() -> None:
         fetch_filings(client, db, TICKER)
         filings = [f for f in db.query_by_ticker(TICKER) if f.local_path]
 
-    most_recent = sorted(filings, key=lambda f: f.filing_date, reverse=True)[0]
+    most_recent = max(filings, key=lambda f: f.filing_date)
     print(f"Using {TICKER} {most_recent.form} filed {most_recent.filing_date}")
 
     html = Path(most_recent.local_path).read_text(encoding="utf-8", errors="ignore")

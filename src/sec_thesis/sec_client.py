@@ -11,6 +11,7 @@ import hashlib
 import json
 import time
 from pathlib import Path
+from typing import Self
 
 import httpx
 
@@ -39,7 +40,7 @@ class SECClient:
         self._last_request_at = 0.0
         settings.cache_dir.mkdir(parents=True, exist_ok=True)
 
-    def __enter__(self) -> SECClient:
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(self, *exc_info: object) -> None:

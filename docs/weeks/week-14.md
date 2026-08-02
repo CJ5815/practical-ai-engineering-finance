@@ -1,5 +1,7 @@
 # Week 14: FastAPI
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-14_Practical_AI_Engineering_for_Finance.md](week-14_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Expose the project through a small, documented web API.

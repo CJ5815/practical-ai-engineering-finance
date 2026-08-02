@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import time
+from typing import Self
 
 import httpx
 from pydantic import BaseModel
@@ -159,7 +160,7 @@ class EdgarClient:
             transport=transport,
         )
 
-    def __enter__(self) -> EdgarClient:
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(self, *exc_info: object) -> None:

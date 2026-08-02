@@ -10,13 +10,19 @@ import json
 
 import pytest
 
+pytest.importorskip("chromadb", reason="requires the [rag] extra: pip install -e '.[rag]'")
+
 from ai_finance_course.query_expansion import (
     QueryExpansion,
     build_expansion_prompt,
     expand_query,
     retrieve_with_expansion,
 )
-from ai_finance_course.vector_store import add_chunks, get_or_create_collection, query_collection
+from ai_finance_course.vector_store import (
+    add_chunks,
+    get_or_create_collection,
+    query_collection,
+)
 
 
 def test_build_expansion_prompt_includes_query() -> None:

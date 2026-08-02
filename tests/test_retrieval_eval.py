@@ -8,9 +8,17 @@ from __future__ import annotations
 import json
 from functools import partial
 
+import pytest
+
+pytest.importorskip("chromadb", reason="requires the [rag] extra: pip install -e '.[rag]'")
+
 from ai_finance_course.query_expansion import retrieve_with_expansion
 from ai_finance_course.retrieval_eval import hit_rate
-from ai_finance_course.vector_store import add_chunks, get_or_create_collection, query_collection
+from ai_finance_course.vector_store import (
+    add_chunks,
+    get_or_create_collection,
+    query_collection,
+)
 
 
 def test_hit_rate_is_one_when_every_question_finds_its_ticker(tmp_path, keyword_stub_embedding_function) -> None:

@@ -64,8 +64,12 @@ nav:
       - Week 12:
           - Evaluation: weeks/week-12.md
           - Full Lesson: weeks/week-12_Practical_AI_Engineering_for_Finance.md
-      - Week 13 — Testing: weeks/week-13.md
-      - Week 14 — FastAPI: weeks/week-14.md
+      - Week 13:
+          - Testing: weeks/week-13.md
+          - Full Lesson: weeks/week-13_Practical_AI_Engineering_for_Finance.md
+      - Week 14:
+          - FastAPI: weeks/week-14.md
+          - Full Lesson: weeks/week-14_Practical_AI_Engineering_for_Finance.md
       - Week 15 — Deployment: weeks/week-15.md
       - Week 16 — Capstone: weeks/week-16.md
       - Week 17:

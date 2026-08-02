@@ -51,3 +51,32 @@ def test_chunk_document_does_not_mutate_the_original_metadata() -> None:
     chunk_document("some document text", metadata, chunk_size=100, overlap=10)
 
     assert metadata == {"ticker": "AAPL"}
+
+
+# Verified directly across all four combinations before writing this test
+# (Week 13 §2.2): every chunk stays within chunk_size, and the last chunk
+# always contains the document's final character, regardless of how
+# chunk_size and overlap combine against a length that isn't a clean
+# multiple of either.
+@pytest.mark.parametrize(
+    ("chunk_size", "overlap"),
+    [(10, 2), (20, 5), (50, 0), (100, 25)],
+)
+def test_chunk_text_every_chunk_stays_within_size_limit(chunk_size: int, overlap: int) -> None:
+    text = "x" * 237
+
+    chunks = chunk_text(text, chunk_size=chunk_size, overlap=overlap)
+
+    assert all(len(chunk) <= chunk_size for chunk in chunks)
+
+
+@pytest.mark.parametrize(
+    ("chunk_size", "overlap"),
+    [(10, 2), (20, 5), (50, 0), (100, 25)],
+)
+def test_chunk_text_last_chunk_contains_final_character(chunk_size: int, overlap: int) -> None:
+    text = "x" * 237
+
+    chunks = chunk_text(text, chunk_size=chunk_size, overlap=overlap)
+
+    assert text[-1] in chunks[-1]

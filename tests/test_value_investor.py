@@ -6,7 +6,11 @@ import pytest
 matplotlib.use("Agg")  # headless backend for tests — no window, no display needed
 
 from ai_finance_course.skills.base import EvidenceChunk, FinancialStatements
-from ai_finance_course.skills.dcf_model import DCFAssumptions, intrinsic_value_per_share, margin_of_safety_pct
+from ai_finance_course.skills.dcf_model import (
+    DCFAssumptions,
+    intrinsic_value_per_share,
+    margin_of_safety_pct,
+)
 from ai_finance_course.skills.value_investor import (
     build_prompt,
     evaluate_company,

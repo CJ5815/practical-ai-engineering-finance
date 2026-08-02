@@ -41,9 +41,11 @@ def test_list_filings_indexes_and_filters(tmp_path) -> None:
     def handler(request: httpx.Request) -> httpx.Response:
         return httpx.Response(200, json=SAMPLE_SUBMISSIONS)
 
-    with SECClient(_settings(tmp_path), transport=httpx.MockTransport(handler)) as client:
-        with FilingsDB() as db:
-            results = list_filings(client, db, "AAPL", "0000320193", forms=["10-K"])
+    with (
+        SECClient(_settings(tmp_path), transport=httpx.MockTransport(handler)) as client,
+        FilingsDB() as db,
+    ):
+        results = list_filings(client, db, "AAPL", "0000320193", forms=["10-K"])
 
     assert len(results) == 1
     assert results[0].form == "10-K"
@@ -55,10 +57,12 @@ def test_fetch_filings_downloads_and_records_local_path(tmp_path) -> None:
             return httpx.Response(200, json=SAMPLE_SUBMISSIONS)
         return httpx.Response(200, content=b"<html>filing text</html>")
 
-    with SECClient(_settings(tmp_path), transport=httpx.MockTransport(handler)) as client:
-        with FilingsDB() as db:
-            list_filings(client, db, "AAPL", "0000320193")
-            updated = fetch_filings(client, db, "AAPL")
+    with (
+        SECClient(_settings(tmp_path), transport=httpx.MockTransport(handler)) as client,
+        FilingsDB() as db,
+    ):
+        list_filings(client, db, "AAPL", "0000320193")
+        updated = fetch_filings(client, db, "AAPL")
 
     assert len(updated) == 2
     assert all(record.local_path is not None for record in updated)

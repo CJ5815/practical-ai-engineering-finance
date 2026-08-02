@@ -64,3 +64,11 @@ pythonpath = ["src"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+
+[tool.ruff.lint.flake8-bugbear]
+# FastAPI's own recommended pattern is `param: Type = Depends(...)` in a
+# route function's signature — B008 flags function calls in argument
+# defaults generally (usually a real bug), but Depends/Query/Path/Body are
+# specifically designed to be evaluated this way. This allowlists them
+# instead of restructuring away from FastAPI's idiomatic style (Week 14).
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query", "fastapi.Path", "fastapi.Body"]

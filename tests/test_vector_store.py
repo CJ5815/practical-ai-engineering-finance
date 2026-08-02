@@ -8,7 +8,15 @@ SentenceTransformerEmbeddingFunction.
 
 from __future__ import annotations
 
-from ai_finance_course.vector_store import add_chunks, get_or_create_collection, query_collection
+import pytest
+
+pytest.importorskip("chromadb", reason="requires the [rag] extra: pip install -e '.[rag]'")
+
+from ai_finance_course.vector_store import (
+    add_chunks,
+    get_or_create_collection,
+    query_collection,
+)
 
 
 def test_get_or_create_collection_persists_across_calls(tmp_path, keyword_stub_embedding_function) -> None:

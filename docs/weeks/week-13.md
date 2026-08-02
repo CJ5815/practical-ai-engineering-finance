@@ -1,5 +1,7 @@
 # Week 13: Testing
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-13_Practical_AI_Engineering_for_Finance.md](week-13_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Use pytest, fixtures, mocks, and integration tests to make the application reliable.
