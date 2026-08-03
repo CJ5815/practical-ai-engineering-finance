@@ -73,7 +73,9 @@ nav:
       - Week 15:
           - Deployment: weeks/week-15.md
           - Full Lesson: weeks/week-15_Practical_AI_Engineering_for_Finance.md
-      - Week 16 — Capstone: weeks/week-16.md
+      - Week 16:
+          - Capstone: weeks/week-16.md
+          - Full Lesson: weeks/week-16_Practical_AI_Engineering_for_Finance.md
       - Week 17:
           - Investment Philosophy Skills: weeks/week-17.md
           - Full Lesson: weeks/week-17_Practical_AI_Engineering_for_Finance.md

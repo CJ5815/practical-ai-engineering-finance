@@ -1,5 +1,7 @@
 # Week 16: Capstone
 
+> **Full lesson content:** This page is the day-by-day schedule and checklist. For the complete lesson — concept explanations, guided code walkthroughs, exercises, and the quiz — see [week-16_Practical_AI_Engineering_for_Finance.md](week-16_Practical_AI_Engineering_for_Finance.md).
+
 ## Objective
 
 Integrate, document, demonstrate, and reflect on the complete project.

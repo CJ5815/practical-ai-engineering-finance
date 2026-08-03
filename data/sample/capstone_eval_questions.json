@@ -1,0 +1,87 @@
+[
+  {
+    "query": "how much did Apple's revenue grow?",
+    "expected_ticker": "AAPL",
+    "relevant_texts": ["Apple reported quarterly revenue of $94.9 billion, up 6% year over year, with Services revenue reaching an all-time high."]
+  },
+  {
+    "query": "did Apple's Services revenue hit a record?",
+    "expected_ticker": "AAPL",
+    "relevant_texts": ["Apple reported quarterly revenue of $94.9 billion, up 6% year over year, with Services revenue reaching an all-time high."]
+  },
+  {
+    "query": "how did iPhone sales perform in China?",
+    "expected_ticker": "AAPL",
+    "relevant_texts": ["iPhone revenue increased 3% year over year despite a challenging macroeconomic environment in Greater China."]
+  },
+  {
+    "query": "is Apple dependent on manufacturers in Asia?",
+    "expected_ticker": "AAPL",
+    "relevant_texts": ["The Company's business depends on a small number of contract manufacturers concentrated in Asia, and any disruption to those relationships could materially affect production."]
+  },
+  {
+    "query": "does Apple face regulatory pressure over its App Store?",
+    "expected_ticker": "AAPL",
+    "relevant_texts": ["Apple faces increasing regulatory scrutiny in the European Union and other jurisdictions regarding its App Store policies."]
+  },
+  {
+    "query": "how fast is Microsoft's cloud business growing?",
+    "expected_ticker": "MSFT",
+    "relevant_texts": ["Microsoft Cloud revenue grew 22% year over year, led by continued strong demand for Azure and other cloud services."]
+  },
+  {
+    "query": "is Azure demand still strong?",
+    "expected_ticker": "MSFT",
+    "relevant_texts": ["Microsoft Cloud revenue grew 22% year over year, led by continued strong demand for Azure and other cloud services."]
+  },
+  {
+    "query": "how is Microsoft 365 Commercial performing?",
+    "expected_ticker": "MSFT",
+    "relevant_texts": ["Productivity and Business Processes segment revenue increased, driven by growth in Microsoft 365 Commercial products."]
+  },
+  {
+    "query": "does Microsoft face competition in AI and cloud services?",
+    "expected_ticker": "MSFT",
+    "relevant_texts": ["Intense competition in cloud infrastructure and AI services could pressure Microsoft's pricing and market share over time."]
+  },
+  {
+    "query": "what cybersecurity risks does Microsoft disclose?",
+    "expected_ticker": "MSFT",
+    "relevant_texts": ["Cybersecurity incidents, including sophisticated nation-state attacks, pose an ongoing risk to Microsoft's products and customer trust."]
+  },
+  {
+    "query": "are nation-state cyberattacks a disclosed risk for Microsoft?",
+    "expected_ticker": "MSFT",
+    "relevant_texts": ["Cybersecurity incidents, including sophisticated nation-state attacks, pose an ongoing risk to Microsoft's products and customer trust."]
+  },
+  {
+    "query": "how did Alphabet's advertising business do?",
+    "expected_ticker": "GOOGL",
+    "relevant_texts": ["Alphabet's advertising revenue increased, with particular strength in YouTube ads and Google Search."]
+  },
+  {
+    "query": "how did YouTube advertising perform?",
+    "expected_ticker": "GOOGL",
+    "relevant_texts": ["Alphabet's advertising revenue increased, with particular strength in YouTube ads and Google Search."]
+  },
+  {
+    "query": "is Google Cloud profitable?",
+    "expected_ticker": "GOOGL",
+    "relevant_texts": ["Google Cloud revenue grew and the segment reported an operating profit for a second consecutive quarter."]
+  },
+  {
+    "query": "does Alphabet face antitrust litigation?",
+    "expected_ticker": "GOOGL",
+    "relevant_texts": ["Alphabet faces ongoing antitrust litigation in the United States and European Union related to its search and advertising businesses."]
+  },
+  {
+    "query": "is EU antitrust action a risk for Alphabet?",
+    "expected_ticker": "GOOGL",
+    "relevant_texts": ["Alphabet faces ongoing antitrust litigation in the United States and European Union related to its search and advertising businesses."]
+  },
+  {
+    "query": "could privacy changes hurt Alphabet's ad business?",
+    "expected_ticker": "GOOGL",
+    "relevant_texts": ["Changes to browser and platform privacy policies could reduce the effectiveness of Alphabet's advertising products."]
+  }
+]
