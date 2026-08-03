@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      # Named volume, not a bind mount: the indexed collection persists
+      # across `docker compose down`/`up` (a restart doesn't re-run the
+      # startup indexing), but nothing on the host filesystem is touched.
+      - chroma-data:/app/data/processed
+
+volumes:
+  chroma-data:

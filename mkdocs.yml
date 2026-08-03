@@ -70,7 +70,9 @@ nav:
       - Week 14:
           - FastAPI: weeks/week-14.md
           - Full Lesson: weeks/week-14_Practical_AI_Engineering_for_Finance.md
-      - Week 15 — Deployment: weeks/week-15.md
+      - Week 15:
+          - Deployment: weeks/week-15.md
+          - Full Lesson: weeks/week-15_Practical_AI_Engineering_for_Finance.md
       - Week 16 — Capstone: weeks/week-16.md
       - Week 17:
           - Investment Philosophy Skills: weeks/week-17.md
