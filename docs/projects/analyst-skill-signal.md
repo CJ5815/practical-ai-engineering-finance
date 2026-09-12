@@ -1,4 +1,4 @@
-# Project: analyst-skill-signal
+# Project: Analyst Skill Signal
 
 ## Problem
 
