@@ -90,6 +90,7 @@ nav:
           - Full Lesson: weeks/week-20_Practical_AI_Engineering_for_Finance.md
   - Projects:
       - Capstone: projects/capstone.md
+      - analyst-skill-signal: projects/analyst-skill-signal.md
       - Grading Rubric: projects/rubric.md
   - Resources:
       - Interview Preparation: resources/interview-prep.md
